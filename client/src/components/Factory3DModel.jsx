@@ -245,46 +245,46 @@ const ZoomHandler = ({ controlsRef }) => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-40 pointer-events-auto transition-all duration-300 ${isFullscreen ? 'top-8' : 'top-32'}`}>
-        <div className="bg-white px-6 py-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.08)] text-xs font-medium text-company-dark/60 flex items-center gap-2 border border-black/5">
-          <MousePointer2 size={14} />
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'bottom-4 md:bottom-auto md:top-32'}`}>
+        <div className="bg-white/90 backdrop-blur-sm px-3 md:px-6 py-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.08)] text-[10px] md:text-xs font-medium text-company-dark/60 flex items-center justify-center gap-1 md:gap-2 border border-black/5 w-full md:w-auto text-center">
+          <MousePointer2 size={12} className="hidden md:block" />
           <span>{t('dragRotate')}</span>
-          <span className="mx-1">•</span>
+          <span className="mx-0.5 md:mx-1">•</span>
           <span>{t('scrollZoom')}</span>
-          <span className="mx-1">•</span>
+          <span className="mx-0.5 md:mx-1">•</span>
           <span>{t('rightPan')}</span>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap justify-center gap-2 w-full">
           <button 
             onClick={() => setAutoRotate(!autoRotate)}
-            className="bg-white hover:bg-gray-50 px-4 py-2 rounded-full shadow-sm text-xs font-medium text-company-dark flex items-center gap-2 border border-black/5 transition-colors"
+            className="bg-white/90 backdrop-blur-sm hover:bg-gray-50 px-3 md:px-4 py-2 rounded-full shadow-sm text-[11px] md:text-xs font-medium text-company-dark flex items-center gap-1.5 md:gap-2 border border-black/5 transition-colors"
           >
-            {autoRotate ? <Pause size={14} /> : <Play size={14} />}
+            {autoRotate ? <Pause size={12} /> : <Play size={12} />}
             {autoRotate ? t('stopRotate') : t('autoRotate')}
           </button>
           
           <button 
             onClick={toggleFullscreen}
-            className="bg-white hover:bg-gray-50 px-4 py-2 rounded-full shadow-sm text-xs font-medium text-company-dark flex items-center gap-2 border border-black/5 transition-colors"
+            className="bg-white/90 backdrop-blur-sm hover:bg-gray-50 px-3 md:px-4 py-2 rounded-full shadow-sm text-[11px] md:text-xs font-medium text-company-dark flex items-center gap-1.5 md:gap-2 border border-black/5 transition-colors"
           >
-            <Maximize size={14} />
+            <Maximize size={12} />
             {t('fullscreen')}
           </button>
           
           <button 
             onClick={handleReset}
-            className="bg-white hover:bg-gray-50 px-4 py-2 rounded-full shadow-sm text-xs font-medium text-company-dark flex items-center gap-2 border border-black/5 transition-colors"
+            className="bg-white/90 backdrop-blur-sm hover:bg-gray-50 px-3 md:px-4 py-2 rounded-full shadow-sm text-[11px] md:text-xs font-medium text-company-dark flex items-center gap-1.5 md:gap-2 border border-black/5 transition-colors"
           >
-            <RotateCcw size={14} />
+            <RotateCcw size={12} />
             {t('resetView')}
           </button>
 
           <button 
             onClick={() => setShowHotspots(!showHotspots)}
-            className={`${showHotspots ? 'bg-company-green text-white border-transparent' : 'bg-white hover:bg-gray-50 text-company-dark border-black/5'} px-4 py-2 rounded-full shadow-sm text-xs font-medium flex items-center gap-2 border transition-colors`}
+            className={`${showHotspots ? 'bg-company-green text-white border-transparent' : 'bg-white/90 backdrop-blur-sm hover:bg-gray-50 text-company-dark border-black/5'} px-3 md:px-4 py-2 rounded-full shadow-sm text-[11px] md:text-xs font-medium flex items-center gap-1.5 md:gap-2 border transition-colors`}
           >
-            <Info size={14} />
+            <Info size={12} />
             {t('showHotspots')}
           </button>
         </div>

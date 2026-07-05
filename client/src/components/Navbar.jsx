@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Leaf, ChevronDown } from 'lucide-react';
+import { Leaf, ChevronDown, Menu, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const languages = [
@@ -14,6 +14,7 @@ const languages = [
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const langRef = useRef(null);
 
   useEffect(() => {
@@ -29,22 +30,26 @@ const Navbar = () => {
   const activeLang = languages.find(l => l.code === language) || languages[0];
 
   return (
-    <nav className="fixed w-full z-50 bg-company-offWhite/80 backdrop-blur-md py-4 px-12 flex justify-between items-center top-0">
+    <nav className="fixed w-full z-[100] bg-company-offWhite/80 backdrop-blur-md py-4 px-6 md:px-12 flex justify-between items-center top-0 shadow-sm">
       <Link 
         to="/" 
-        className="flex items-center gap-3 text-company-darkGreen cursor-pointer"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="flex items-center gap-2 md:gap-3 text-company-darkGreen cursor-pointer relative z-[101]"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setIsMobileMenuOpen(false);
+        }}
       >
         <div className="bg-company-green p-1.5 rounded-full">
           <Leaf size={24} className="text-white" />
         </div>
         <div className="flex flex-col">
-          <span className="text-2xl font-bold tracking-tight leading-none text-company-darkGreen">BioCane</span>
-          <span className="text-[0.6rem] font-bold tracking-[0.2em] text-company-dark/50 mt-1">SUGARCANE ETHANOL</span>
+          <span className="text-xl md:text-2xl font-bold tracking-tight leading-none text-company-darkGreen">BioCane</span>
+          <span className="text-[0.5rem] md:text-[0.6rem] font-bold tracking-[0.2em] text-company-dark/50 mt-1">SUGARCANE ETHANOL</span>
         </div>
       </Link>
       
-      <div className="flex gap-8 items-center">
+      {/* Desktop Links */}
+      <div className="hidden md:flex gap-8 items-center">
         <a href="/#products" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('products')}</a>
         <a href="/#process" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('process')}</a>
         <a href="/#team" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('team')}</a>
@@ -52,7 +57,8 @@ const Navbar = () => {
         <a href="/#contact" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('contact')}</a>
       </div>
       
-      <div className="flex gap-6 items-center">
+      {/* Desktop Right Actions */}
+      <div className="hidden md:flex gap-6 items-center">
         {/* Custom Language Dropdown */}
         <div className="relative" ref={langRef}>
           <button 
@@ -87,6 +93,51 @@ const Navbar = () => {
         <Link to="/login" className="text-sm text-company-dark/70 hover:text-company-dark transition-all font-medium hover:scale-105 active:scale-95">{t('login')}</Link>
         <a href="#contact" className="bg-company-green text-white text-sm px-6 py-2.5 rounded-full hover:bg-company-darkGreen transition-all duration-300 font-medium hover:scale-105 active:scale-95 hover:shadow-[0_8px_20px_rgba(40,167,69,0.25)]">{t('contactNow')}</a>
       </div>
+
+      {/* Mobile Menu Button */}
+      <button 
+        className="md:hidden flex items-center text-company-darkGreen relative z-[101]"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-0 pt-24 bg-white z-[100] flex flex-col px-6 pb-6 overflow-y-auto">
+          <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen">
+            <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('products')}</a>
+            <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('process')}</a>
+            <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('team')}</a>
+            <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('about')}</a>
+            <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('contact')}</a>
+            
+            <div className="py-4 border-b border-gray-100">
+              <span className="text-sm text-company-dark/50 mb-3 block uppercase tracking-wider">Select Language</span>
+              <div className="grid grid-cols-2 gap-3">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center gap-3 p-3 rounded-xl border ${language === lang.code ? 'border-company-green bg-company-green/5 text-company-green' : 'border-gray-100 bg-gray-50'}`}
+                  >
+                    <img src={lang.flagUrl} alt={lang.code} className="w-[20px]" />
+                    <span className="text-sm">{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-col gap-4">
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-gray-100 rounded-xl text-company-dark font-medium">{t('login')}</Link>
+              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-company-green text-white rounded-xl font-medium">{t('contactNow')}</a>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
