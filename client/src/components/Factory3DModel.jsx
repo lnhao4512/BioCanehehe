@@ -8,7 +8,11 @@ const Hotspot = React.memo(({ position, title, desc, align = 'right', dx = 40, d
   const [scale, setScale] = useState(1);
   
   useEffect(() => {
-    const handleResize = () => setScale(window.innerWidth < 1024 ? 0.4 : 1);
+    const handleResize = () => {
+      if (window.innerWidth < 768) setScale(0.4);
+      else if (window.innerWidth < 1280) setScale(0.6);
+      else setScale(1);
+    };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -43,9 +47,9 @@ const Hotspot = React.memo(({ position, title, desc, align = 'right', dx = 40, d
         {/* Endpoint Container */}
         <div className="absolute" style={{ top: actualDy, left: actualDx }}>
           {/* Content Box */}
-          <div className={`absolute w-max max-w-[140px] md:max-w-[240px] bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 md:p-4 border border-company-green/15 ${boxClasses} pointer-events-auto transition-transform hover:scale-105 duration-300 hotspot-box`}>
-             <h4 className="font-bold text-company-darkGreen text-xs md:text-[13px] mb-1 md:mb-1.5">{title}</h4>
-             <p className="text-company-dark/70 text-[10px] md:text-[11px] leading-relaxed whitespace-pre-wrap">{desc}</p>
+          <div className={`absolute w-max max-w-[120px] md:max-w-[180px] xl:max-w-[240px] bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-2 md:p-3 xl:p-4 border border-company-green/15 ${boxClasses} pointer-events-auto transition-transform hover:scale-105 duration-300 hotspot-box`}>
+             <h4 className="font-bold text-company-darkGreen text-[10px] md:text-xs xl:text-[13px] mb-1 xl:mb-1.5">{title}</h4>
+             <p className="text-company-dark/70 text-[9px] md:text-[10px] xl:text-[11px] leading-relaxed whitespace-pre-wrap">{desc}</p>
           </div>
         </div>
       </div>
@@ -245,7 +249,7 @@ const ZoomHandler = ({ controlsRef }) => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'bottom-4 md:bottom-auto md:top-32'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'bottom-4 md:bottom-8'}`}>
         <div className="bg-white/90 backdrop-blur-sm px-3 md:px-6 py-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.08)] text-[10px] md:text-xs font-medium text-company-dark/60 flex items-center justify-center gap-1 md:gap-2 border border-black/5 w-full md:w-auto text-center">
           <MousePointer2 size={12} className="hidden md:block" />
           <span>{t('dragRotate')}</span>
