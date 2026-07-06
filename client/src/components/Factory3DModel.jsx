@@ -143,12 +143,12 @@ const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
       {/* Hotspots */}
       {showHotspots && (
         <>
-          <Hotspot position={[-1.5, 1.0, 1.5]} title={t('hotspot1Title')} desc={t('hotspot1Desc')} dx={-130} dy={0} align="left" portal={containerRef} />
-          <Hotspot position={[0, 1.2, 0.7]} title={t('hotspot2Title')} desc={t('hotspot2Desc')} dx={-160} dy={0} align="left" portal={containerRef} />
-          <Hotspot position={[0.8, 1.2, -0.4]} title={t('hotspot3Title')} desc={t('hotspot3Desc')} dx={160} dy={0} align="right" portal={containerRef} />
-          <Hotspot position={[1, 2.5, -1]} title={t('hotspot4Title')} desc={t('hotspot4Desc')} dx={150} dy={0} align="right" portal={containerRef} />
-          <Hotspot position={[1.8, 3.5, 0]} title={t('hotspot5Title')} desc={t('hotspot5Desc')} dx={130} dy={0} align="right" portal={containerRef} />
-          <Hotspot position={[-0.8, 2.0, -1.2]} title={t('hotspot6Title')} desc={t('hotspot6Desc')} dx={-150} dy={0} align="left" portal={containerRef} />
+          <Hotspot position={[-1.5, 1.0, 1.5]} title={t('hotspot1Title')} desc={t('hotspot1Desc')} dx={-100} dy={20} align="left" portal={containerRef} />
+          <Hotspot position={[0, 1.2, 0.7]} title={t('hotspot2Title')} desc={t('hotspot2Desc')} dx={-80} dy={60} align="bottom" portal={containerRef} />
+          <Hotspot position={[0.8, 1.2, -0.4]} title={t('hotspot3Title')} desc={t('hotspot3Desc')} dx={80} dy={60} align="bottom" portal={containerRef} />
+          <Hotspot position={[1, 2.5, -1]} title={t('hotspot4Title')} desc={t('hotspot4Desc')} dx={100} dy={-20} align="right" portal={containerRef} />
+          <Hotspot position={[1.8, 3.5, 0]} title={t('hotspot5Title')} desc={t('hotspot5Desc')} dx={-40} dy={-70} align="top" portal={containerRef} />
+          <Hotspot position={[-0.8, 2.0, -1.2]} title={t('hotspot6Title')} desc={t('hotspot6Desc')} dx={-60} dy={-70} align="top" portal={containerRef} />
         </>
       )}
     </group>
