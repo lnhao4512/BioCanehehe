@@ -158,7 +158,7 @@ const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
 const Factory3DModel = () => {
   const { t } = useLanguage();
   const [autoRotate, setAutoRotate] = useState(true);
-  const [showHotspots, setShowHotspots] = useState(false);
+  const [showHotspots, setShowHotspots] = useState(true);
   useEffect(() => {
     // Optional: Only show hotspots by default on large screens if desired
     // setShowHotspots(window.innerWidth >= 1024);
@@ -316,7 +316,7 @@ const ZoomHandler = ({ controlsRef }) => {
             className={`${showHotspots ? 'bg-company-darkGreen text-white border-transparent shadow-[0_6px_20px_rgba(20,50,30,0.2)]' : 'bg-white/95 backdrop-blur-md hover:bg-company-offWhite text-company-dark border-black/5 hover:border-company-green/30 hover:text-company-green shadow-[0_4px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_6px_20px_rgba(40,167,69,0.15)]'} px-5 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold flex items-center gap-2 border transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}
           >
             <Info size={16} />
-            {t('showHotspots')}
+            {showHotspots ? t('hideHotspots') : t('showHotspots')}
           </button>
         </div>
       </div>
