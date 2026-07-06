@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, memo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows, Html } from '@react-three/drei';
 import { Maximize, RotateCcw, Play, Pause, MousePointer2, Info } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const Hotspot = React.memo(({ position, title, desc, align = 'right', dx = 40, dy = 0, portal }) => {
+const Hotspot = memo(({ position, title, desc, align = 'right', dx = 40, dy = 0, portal, modelScale = 1 }) => {
   const [scale, setScale] = useState(1);
   
   useEffect(() => {
@@ -34,7 +34,7 @@ const Hotspot = React.memo(({ position, title, desc, align = 'right', dx = 40, d
 
   return (
     <Html position={position} center portal={portal} className="pointer-events-none z-50">
-      <div className="relative">
+      <div className="relative" style={{ transform: `scale(${modelScale})`, transformOrigin: 'center center' }}>
         {/* Center Dot */}
         <div className="absolute w-3 h-3 bg-company-green rounded-full border-2 border-white shadow-md transform -translate-x-1/2 -translate-y-1/2 z-20" />
         
@@ -148,12 +148,12 @@ const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
       {/* Hotspots */}
       {showHotspots && (
         <>
-          <Hotspot position={[-1.5, 1.0, 1.5]} title={t('hotspot1Title')} desc={t('hotspot1Desc')} dx={-100} dy={20} align="left" portal={containerRef} />
-          <Hotspot position={[0, 1.2, 0.7]} title={t('hotspot2Title')} desc={t('hotspot2Desc')} dx={-80} dy={60} align="bottom" portal={containerRef} />
-          <Hotspot position={[0.8, 1.2, -0.4]} title={t('hotspot3Title')} desc={t('hotspot3Desc')} dx={80} dy={60} align="bottom" portal={containerRef} />
-          <Hotspot position={[1, 2.5, -1]} title={t('hotspot4Title')} desc={t('hotspot4Desc')} dx={100} dy={-20} align="right" portal={containerRef} />
-          <Hotspot position={[1.8, 3.5, 0]} title={t('hotspot5Title')} desc={t('hotspot5Desc')} dx={-40} dy={-70} align="top" portal={containerRef} />
-          <Hotspot position={[-0.8, 2.0, -1.2]} title={t('hotspot6Title')} desc={t('hotspot6Desc')} dx={-60} dy={-70} align="top" portal={containerRef} />
+          <Hotspot position={[-1.5, 1.0, 1.5]} title={t('hotspot1Title')} desc={t('hotspot1Desc')} dx={-100} dy={20} align="left" portal={containerRef} modelScale={modelScale} />
+          <Hotspot position={[0, 1.2, 0.7]} title={t('hotspot2Title')} desc={t('hotspot2Desc')} dx={-80} dy={60} align="bottom" portal={containerRef} modelScale={modelScale} />
+          <Hotspot position={[0.8, 1.2, -0.4]} title={t('hotspot3Title')} desc={t('hotspot3Desc')} dx={80} dy={60} align="bottom" portal={containerRef} modelScale={modelScale} />
+          <Hotspot position={[1, 2.5, -1]} title={t('hotspot4Title')} desc={t('hotspot4Desc')} dx={100} dy={-20} align="right" portal={containerRef} modelScale={modelScale} />
+          <Hotspot position={[1.8, 3.5, 0]} title={t('hotspot5Title')} desc={t('hotspot5Desc')} dx={-40} dy={-70} align="top" portal={containerRef} modelScale={modelScale} />
+          <Hotspot position={[-0.8, 2.0, -1.2]} title={t('hotspot6Title')} desc={t('hotspot6Desc')} dx={-60} dy={-70} align="top" portal={containerRef} modelScale={modelScale} />
         </>
       )}
     </group>
