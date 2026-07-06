@@ -49,19 +49,19 @@ const Home = () => {
               <span className="text-sm font-bold tracking-[0.2em] text-company-green uppercase whitespace-nowrap">{t('greenEnergy')}</span>
             </div>
             <h1 
-              className="text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen mb-6 md:mb-8"
               style={{ lineHeight: '1.35' }}
             >
               {t('heroTitle1')}<br />{t('heroTitle2')}<br />{t('heroTitle3')}
             </h1>
-            <p className="text-base lg:text-lg text-company-dark/70 mb-10 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-company-dark/70 mb-8 md:mb-10 leading-relaxed">
               {t('heroDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <a href="#products" className="group bg-company-darkGreen text-white px-8 py-4 rounded-full hover:bg-company-green transition-all duration-300 text-base font-medium flex items-center justify-center gap-2 whitespace-nowrap shadow-md hover:shadow-[0_8px_25px_rgba(20,50,30,0.3)] hover:scale-105 active:scale-95">
+              <a href="#products" className="group bg-company-darkGreen text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full hover:bg-company-green transition-all duration-300 text-sm md:text-base font-medium flex items-center justify-center gap-2 whitespace-nowrap shadow-md hover:shadow-[0_8px_25px_rgba(20,50,30,0.3)] hover:scale-105 active:scale-95">
                 {t('exploreProducts')} <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1.5" />
               </a>
-              <a href="#brand" className="bg-white text-company-dark px-8 py-4 rounded-full border border-company-dark/10 hover:border-company-dark/30 hover:bg-gray-50 transition-all duration-300 text-base font-medium text-center whitespace-nowrap shadow-sm hover:scale-105 active:scale-95">
+              <a href="#brand" className="bg-white text-company-dark px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-company-dark/10 hover:border-company-dark/30 hover:bg-gray-50 transition-all duration-300 text-sm md:text-base font-medium text-center whitespace-nowrap shadow-sm hover:scale-105 active:scale-95">
                 {t('downloadProfile')}
               </a>
             </div>
@@ -79,8 +79,8 @@ const Home = () => {
               <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/5 rounded-full"></div>
               <Leaf className="text-company-lighterGreen" size={32} />
               <div>
-                <h3 className="text-4xl xl:text-5xl font-bold font-serif mb-2">75M</h3>
-                <p className="text-white/70 text-sm font-medium">{t('litersPerYear')}</p>
+                <h3 className="text-3xl md:text-4xl xl:text-5xl font-bold font-serif mb-1 md:mb-2">75M</h3>
+                <p className="text-white/70 text-xs md:text-sm font-medium">{t('litersPerYear')}</p>
               </div>
             </div>
             
@@ -89,8 +89,8 @@ const Home = () => {
               <div className="bg-company-lighterGreen rounded-[2rem] p-6 text-white shadow-md h-40 flex flex-col justify-between">
                 <Zap className="text-white/90" size={24} />
                 <div>
-                  <h3 className="text-2xl xl:text-3xl font-bold font-serif mb-1">99.5%</h3>
-                  <p className="text-white/90 text-sm font-medium">{t('purity')}</p>
+                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold font-serif mb-1">99.5%</h3>
+                  <p className="text-white/90 text-xs md:text-sm font-medium">{t('purity')}</p>
                 </div>
               </div>
               
@@ -98,8 +98,8 @@ const Home = () => {
               <div className="bg-[#e77a63] rounded-[2rem] p-6 text-white shadow-md h-40 flex flex-col justify-between">
                 <TrendingDown className="text-white/90" size={24} />
                 <div>
-                  <h3 className="text-2xl xl:text-3xl font-bold font-serif mb-1">-40%</h3>
-                  <p className="text-white/90 text-sm font-medium">{t('co2Reduction')}</p>
+                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold font-serif mb-1">-40%</h3>
+                  <p className="text-white/90 text-xs md:text-sm font-medium">{t('co2Reduction')}</p>
                 </div>
               </div>
             </div>
