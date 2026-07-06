@@ -45,18 +45,18 @@ const Navbar = () => {
           <Leaf size={24} className="text-white" />
         </div>
         <div className="flex flex-col">
-          <span className="text-xl md:text-2xl font-bold tracking-tight leading-none text-company-darkGreen">BioCane</span>
-          <span className="text-[0.5rem] md:text-[0.6rem] font-bold tracking-[0.2em] text-company-dark/50 mt-1">SUGARCANE ETHANOL</span>
+          <span className="text-xl md:text-2xl font-bold tracking-tight leading-none text-company-darkGreen dark:text-white transition-colors duration-500">BioCane</span>
+          <span className="text-[0.5rem] md:text-[0.6rem] font-bold tracking-[0.2em] text-company-dark/50 dark:text-gray-400 mt-1 transition-colors duration-500">SUGARCANE ETHANOL</span>
         </div>
       </Link>
       
       {/* Desktop Links */}
       <div className="hidden md:flex gap-8 items-center">
-        <a href="/#products" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('products')}</a>
-        <a href="/#process" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('process')}</a>
-        <a href="/#team" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('team')}</a>
-        <a href="/#brand" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('about')}</a>
-        <a href="/#contact" className="text-sm text-company-dark/70 hover:text-company-green transition-colors font-medium">{t('contact')}</a>
+        <a href="/#products" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('products')}</a>
+        <a href="/#process" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('process')}</a>
+        <a href="/#team" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('team')}</a>
+        <a href="/#brand" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('about')}</a>
+        <a href="/#contact" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('contact')}</a>
       </div>
       
       {/* Desktop Right Actions */}
@@ -101,13 +101,13 @@ const Navbar = () => {
           )}
         </div>
 
-        <Link to="/login" className="text-sm text-company-dark/70 hover:text-company-dark transition-all font-medium hover:scale-105 active:scale-95">{t('login')}</Link>
-        <a href="#contact" className="bg-company-green text-white text-sm px-6 py-2.5 rounded-full hover:bg-company-darkGreen transition-all duration-300 font-medium hover:scale-105 active:scale-95 hover:shadow-[0_8px_20px_rgba(40,167,69,0.25)]">{t('contactNow')}</a>
+        <Link to="/login" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-dark dark:hover:text-white transition-all font-medium hover:scale-105 active:scale-95">{t('login')}</Link>
+        <a href="#contact" className="bg-company-green text-white text-sm px-6 py-2.5 rounded-full hover:bg-company-darkGreen dark:hover:bg-company-lightGreen transition-all duration-300 font-medium hover:scale-105 active:scale-95 hover:shadow-[0_8px_20px_rgba(40,167,69,0.25)]">{t('contactNow')}</a>
       </div>
 
       {/* Mobile Menu Button */}
       <button 
-        className="md:hidden flex items-center text-company-darkGreen relative z-[101]"
+        className="md:hidden flex items-center text-company-darkGreen dark:text-white relative z-[101]"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -115,15 +115,15 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-0 pt-24 bg-white z-[100] flex flex-col px-6 pb-6 overflow-y-auto">
-          <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen">
-            <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('products')}</a>
-            <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('process')}</a>
-            <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('team')}</a>
-            <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('about')}</a>
-            <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100">{t('contact')}</a>
+        <div className="md:hidden fixed inset-0 top-0 pt-24 bg-white dark:bg-gray-950 z-[100] flex flex-col px-6 pb-6 overflow-y-auto">
+          <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen dark:text-white">
+            <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('products')}</a>
+            <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('process')}</a>
+            <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('team')}</a>
+            <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('about')}</a>
+            <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('contact')}</a>
             
-            <div className="py-4 border-b border-gray-100">
+            <div className="py-4 border-b border-gray-100 dark:border-gray-800">
               <span className="text-sm text-company-dark/50 mb-3 block uppercase tracking-wider">Select Language</span>
               <div className="grid grid-cols-2 gap-3">
                 {languages.map((lang) => (

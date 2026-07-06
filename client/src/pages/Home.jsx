@@ -46,7 +46,7 @@ const Home = () => {
             <div id="left-column">
             <div className="flex items-center gap-4 mb-8">
               <div className="h-[1px] w-12 bg-company-green/40"></div>
-              <span className="text-sm font-bold tracking-[0.2em] text-company-green uppercase whitespace-nowrap">{t('greenEnergy')}</span>
+              <span className="text-sm font-bold tracking-[0.2em] text-company-green dark:text-company-lighterGreen uppercase whitespace-nowrap">{t('greenEnergy')}</span>
             </div>
             <h1 
               className="text-4xl md:text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen dark:text-white mb-6 md:mb-8"
@@ -105,11 +105,11 @@ const Home = () => {
             </div>
             
             {/* Card 4 */}
-            <div className="bg-[#fdf8e7] rounded-[2rem] p-6 text-company-darkGreen flex items-start gap-5 shadow-sm border border-[#f0eadd]">
-              <Award className="text-company-green flex-shrink-0 mt-1" size={24} />
+            <div className="bg-[#fdf8e7] dark:bg-gray-800 rounded-[2rem] p-6 text-company-darkGreen dark:text-white flex items-start gap-5 shadow-sm border border-[#f0eadd] dark:border-gray-700 transition-colors duration-500">
+              <Award className="text-company-green dark:text-company-lighterGreen flex-shrink-0 mt-1" size={24} />
               <div>
                 <h3 className="font-bold text-base mb-1">{t('certTitle')}</h3>
-                <p className="text-company-darkGreen/60 text-sm leading-relaxed">{t('certDesc')}</p>
+                <p className="text-company-darkGreen/60 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-500">{t('certDesc')}</p>
               </div>
             </div>
             </div>
@@ -120,34 +120,34 @@ const Home = () => {
         <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-16 mx-auto w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
           <div id="bottom-bar" className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white dark:border-gray-800 shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-all duration-500 ease-out will-change-transform hover:shadow-md hover:bg-white/95 dark:hover:bg-gray-900/95">
             <div className="flex items-center gap-3 w-[48%] xl:w-auto">
-            <Leaf className="text-company-darkGreen shrink-0" size={20} />
+            <Leaf className="text-company-darkGreen dark:text-company-lighterGreen shrink-0" size={20} />
             <div>
-              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat1Title')}</h4>
-              <p className="text-[#a0a8a3] text-[9px] lg:text-[10px] mt-0.5">{t('feat1Desc')}</p>
+              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen dark:text-white leading-tight">{t('feat1Title')}</h4>
+              <p className="text-[#a0a8a3] dark:text-gray-400 text-[9px] lg:text-[10px] mt-0.5">{t('feat1Desc')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-3 w-[48%] xl:w-auto">
-            <RefreshCw className="text-company-darkGreen shrink-0" size={20} />
+            <RefreshCw className="text-company-darkGreen dark:text-company-lighterGreen shrink-0" size={20} />
             <div>
-              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat2Title')}</h4>
-              <p className="text-[#a0a8a3] text-[9px] lg:text-[10px] mt-0.5">{t('feat2Desc')}</p>
+              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen dark:text-white leading-tight">{t('feat2Title')}</h4>
+              <p className="text-[#a0a8a3] dark:text-gray-400 text-[9px] lg:text-[10px] mt-0.5">{t('feat2Desc')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-3 w-[48%] xl:w-auto">
-            <Shield className="text-company-darkGreen shrink-0" size={20} />
+            <Shield className="text-company-darkGreen dark:text-company-lighterGreen shrink-0" size={20} />
             <div>
-              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat3Title')}</h4>
-              <p className="text-[#a0a8a3] text-[9px] lg:text-[10px] mt-0.5">{t('feat3Desc')}</p>
+              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen dark:text-white leading-tight">{t('feat3Title')}</h4>
+              <p className="text-[#a0a8a3] dark:text-gray-400 text-[9px] lg:text-[10px] mt-0.5">{t('feat3Desc')}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-3 w-[48%] xl:w-auto">
-            <Droplet className="text-company-darkGreen shrink-0" size={20} />
+            <Droplet className="text-company-darkGreen dark:text-company-lighterGreen shrink-0" size={20} />
             <div>
-              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat4Title')}</h4>
-              <p className="text-[#a0a8a3] text-[9px] lg:text-[10px] mt-0.5">{t('feat4Desc')}</p>
+              <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen dark:text-white leading-tight">{t('feat4Title')}</h4>
+              <p className="text-[#a0a8a3] dark:text-gray-400 text-[9px] lg:text-[10px] mt-0.5">{t('feat4Desc')}</p>
             </div>
           </div>
         </div>
