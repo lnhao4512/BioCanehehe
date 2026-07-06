@@ -248,7 +248,7 @@ const Factory3DModel = () => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-0 md:top-8 lg:top-12'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-[35%] md:top-[40%] xl:top-12'}`}>
         <div className="bg-white/95 backdrop-blur-md px-5 md:px-8 py-2.5 md:py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-xs md:text-sm font-medium text-company-dark/70 flex items-center justify-center gap-2 md:gap-3 border border-company-green/10 w-full md:w-auto text-center transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
           <MousePointer2 size={16} className="hidden md:block text-company-green/70" />
           <span>{t('dragRotate')}</span>
