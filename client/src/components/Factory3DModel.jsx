@@ -222,10 +222,10 @@ const ZoomHandler = ({ controlsRef }) => {
       {/* Interaction Zone with Hover Effect */}
       <div 
         ref={setInteractionZone}
-        className={`absolute z-30 cursor-move transition-all duration-500 rounded-[3rem] ${
+        className={`absolute z-30 cursor-grab active:cursor-grabbing transition-all duration-500 ${
           isFullscreen 
-            ? 'inset-0 w-full h-full rounded-none' 
-            : 'top-[25%] bottom-[15%] left-[10%] right-[10%] lg:left-[30%] lg:right-[30%] hover:bg-company-green/[0.03] border-2 border-transparent hover:border-company-green/10 hover:shadow-[inset_0_0_60px_rgba(40,167,69,0.05)]'
+            ? 'inset-0 w-full h-full' 
+            : 'top-[20%] bottom-[10%] left-[5%] right-[5%] lg:left-[25%] lg:right-[25%] hover:bg-[radial-gradient(circle,rgba(40,167,69,0.08)_0%,transparent_65%)]'
         }`}
       />
 
