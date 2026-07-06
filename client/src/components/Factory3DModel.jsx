@@ -197,34 +197,7 @@ const Factory3DModel = () => {
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-const ZoomHandler = ({ controlsRef }) => {
-  useFrame(() => {
-    if (controlsRef.current) {
-      const dist = controlsRef.current.getDistance();
-      const baseDist = 16.2; // Updated default distance based on [10, 8, 10]
-      // Calculate how much we've zoomed in past the base distance
-      const zoomFactor = Math.max(0, baseDist - dist);
-      // Translate elements away
-      const translateAmount = zoomFactor * 100;
-      
-      const leftCol = document.getElementById('left-column');
-      const rightCol = document.getElementById('right-column');
-      const bottomBar = document.getElementById('bottom-bar');
-      
-      if (window.innerWidth >= 1280) {
-        if (leftCol) leftCol.style.transform = `translateX(-${translateAmount}px)`;
-        if (rightCol) rightCol.style.transform = `translateX(${translateAmount}px)`;
-        if (bottomBar) bottomBar.style.transform = `translate(-50%, ${zoomFactor * 30}px)`;
-      } else {
-        // On mobile and tablet, do nothing to prevent layout breakage
-        if (leftCol) leftCol.style.transform = 'none';
-        if (rightCol) rightCol.style.transform = 'none';
-        if (bottomBar) bottomBar.style.transform = 'translate(-50%, 0)';
-      }
-    }
-  });
-  return null;
-};
+// ZoomHandler removed because zooming is disabled in normal view
 
   return (
     <div 
@@ -265,25 +238,28 @@ const ZoomHandler = ({ controlsRef }) => {
             domElement={interactionZone || undefined}
             autoRotate={autoRotate}
             autoRotateSpeed={1}
-            enablePan={true}
-            enableZoom={true}
+            enablePan={isFullscreen}
+            enableZoom={isFullscreen}
             minDistance={2}
             maxDistance={30}
             maxPolarAngle={Math.PI / 2 - 0.1} // Prevent going below ground
           />
-          <ZoomHandler controlsRef={controlsRef} />
         </Canvas>
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-0 md:top-[80px] lg:top-[90px]'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-0 md:top-8 lg:top-12'}`}>
         <div className="bg-white/95 backdrop-blur-md px-5 md:px-8 py-2.5 md:py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-xs md:text-sm font-medium text-company-dark/70 flex items-center justify-center gap-2 md:gap-3 border border-company-green/10 w-full md:w-auto text-center transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
           <MousePointer2 size={16} className="hidden md:block text-company-green/70" />
           <span>{t('dragRotate')}</span>
-          <span className="mx-1 md:mx-2 text-company-green/30">•</span>
-          <span>{t('scrollZoom')}</span>
-          <span className="mx-1 md:mx-2 text-company-green/30">•</span>
-          <span>{t('rightPan')}</span>
+          {isFullscreen && (
+            <>
+              <span className="mx-1 md:mx-2 text-company-green/30">•</span>
+              <span>{t('scrollZoom')}</span>
+              <span className="mx-1 md:mx-2 text-company-green/30">•</span>
+              <span>{t('rightPan')}</span>
+            </>
+          )}
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 w-full">
