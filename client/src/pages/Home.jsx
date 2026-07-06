@@ -249,11 +249,11 @@ const Home = () => {
             <p className="text-lg text-company-dark/60 max-w-2xl mx-auto">{t('teamDesc')}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col bg-white p-6 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 border border-company-dark/5 group hover:-translate-y-1">
+              <div key={index} className="flex flex-col bg-white p-5 xl:p-6 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 border border-company-dark/5 group hover:-translate-y-1">
                 {/* Image */}
-                <div className="w-full mb-6 overflow-hidden rounded-2xl">
+                <div className="w-full mb-5 overflow-hidden rounded-2xl">
                   <img 
                     src={member.image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"} 
                     alt={member.name} 
@@ -262,13 +262,13 @@ const Home = () => {
                 </div>
                 {/* Info */}
                 <div className="flex-1 flex flex-col">
-                  <h3 className="text-2xl font-bold text-company-dark mb-2">{member.name}</h3>
-                  <p className="font-medium text-sm mb-6 leading-relaxed text-[#d62828]">{member.role}</p>
+                  <h3 className="text-xl xl:text-2xl font-bold text-company-dark mb-1.5">{member.name}</h3>
+                  <p className="font-medium text-xs xl:text-sm mb-5 leading-relaxed text-[#d62828]">{member.role}</p>
                   
                   {member.email && (
-                    <div className="flex items-center gap-3 text-company-dark/80 font-medium mt-auto pt-5 border-t border-black/5">
-                      <Mail size={18} className="text-[#d62828]" />
-                      <a href={`mailto:${member.email}`} className="transition-colors text-sm hover:text-[#d62828] truncate">{member.email}</a>
+                    <div className="flex items-center gap-2 xl:gap-3 text-company-dark/80 font-medium mt-auto pt-4 border-t border-black/5">
+                      <Mail size={16} className="text-[#d62828] flex-shrink-0" />
+                      <a href={`mailto:${member.email}`} className="transition-colors text-xs xl:text-sm hover:text-[#d62828] truncate">{member.email}</a>
                     </div>
                   )}
                 </div>
