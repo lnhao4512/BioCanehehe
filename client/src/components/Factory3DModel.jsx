@@ -211,12 +211,12 @@ const ZoomHandler = ({ controlsRef }) => {
       const rightCol = document.getElementById('right-column');
       const bottomBar = document.getElementById('bottom-bar');
       
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         if (leftCol) leftCol.style.transform = `translateX(-${translateAmount}px)`;
         if (rightCol) rightCol.style.transform = `translateX(${translateAmount}px)`;
         if (bottomBar) bottomBar.style.transform = `translate(-50%, ${zoomFactor * 30}px)`;
       } else {
-        // On mobile, just fade them out slightly or do nothing to prevent layout breakage
+        // On mobile and tablet, do nothing to prevent layout breakage
         if (leftCol) leftCol.style.transform = 'none';
         if (rightCol) rightCol.style.transform = 'none';
         if (bottomBar) bottomBar.style.transform = 'translate(-50%, 0)';

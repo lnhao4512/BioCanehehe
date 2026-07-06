@@ -39,10 +39,10 @@ const Home = () => {
           <Factory3DModel />
         </div>
 
-        <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center relative z-10 pointer-events-none">
+        <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-center relative z-10 pointer-events-none">
           
           {/* Left Column - Text */}
-          <FadeIn direction="left" delay={200} className="lg:col-span-3 xl:col-span-3 flex flex-col z-10 pt-8 pointer-events-auto transition-transform duration-100 ease-out will-change-transform">
+          <FadeIn direction="left" delay={200} className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 pt-8 pointer-events-auto transition-transform duration-100 ease-out will-change-transform">
             <div id="left-column">
             <div className="flex items-center gap-4 mb-8">
               <div className="h-[1px] w-12 bg-company-green/40"></div>
@@ -69,10 +69,10 @@ const Home = () => {
           </FadeIn>
           
           {/* Center Column - Placeholder */}
-          <div className="h-[400px] md:h-[500px] lg:h-auto lg:col-span-6 xl:col-span-6 pointer-events-none"></div>
+          <div className="h-[400px] md:h-[500px] xl:h-auto xl:col-span-4 2xl:col-span-6 pointer-events-none"></div>
 
           {/* Right Column - Cards */}
-          <FadeIn direction="right" className="lg:col-span-3 xl:col-span-3 flex flex-col z-10 mt-12 lg:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
+          <FadeIn direction="right" className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 mt-12 xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
             <div id="right-column" className="flex flex-col gap-6 w-full">
               {/* Card 1 */}
             <div className="bg-company-darkGreen rounded-[2rem] p-8 text-white relative overflow-hidden shadow-lg h-48 flex flex-col justify-between">
@@ -117,9 +117,9 @@ const Home = () => {
         </div>
 
         {/* Feature Bar (Bottom) */}
-        <FadeIn direction="up" delay={600} className="relative mt-12 lg:mt-0 lg:absolute lg:bottom-8 left-1/2 -translate-x-1/2 w-[95%] lg:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12 lg:pb-0">
-          <div id="bottom-bar" className="w-full bg-white/80 backdrop-blur-md rounded-[2rem] lg:rounded-full border border-white shadow-sm flex flex-wrap justify-between items-center px-6 lg:px-8 py-4 gap-y-4 gap-x-2 transition-transform duration-100 ease-out will-change-transform hover:shadow-md hover:bg-white/95">
-            <div className="flex items-center gap-3 w-[48%] lg:w-auto">
+        <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-0 xl:absolute xl:bottom-8 left-1/2 -translate-x-1/2 w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12 xl:pb-0">
+          <div id="bottom-bar" className="w-full bg-white/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-transform duration-100 ease-out will-change-transform hover:shadow-md hover:bg-white/95">
+            <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Leaf className="text-company-darkGreen shrink-0" size={20} />
             <div>
               <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat1Title')}</h4>
@@ -127,7 +127,7 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-3 w-[48%] lg:w-auto">
+          <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <RefreshCw className="text-company-darkGreen shrink-0" size={20} />
             <div>
               <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat2Title')}</h4>
@@ -135,7 +135,7 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-3 w-[48%] lg:w-auto">
+          <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Shield className="text-company-darkGreen shrink-0" size={20} />
             <div>
               <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat3Title')}</h4>
@@ -143,7 +143,7 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-3 w-[48%] lg:w-auto">
+          <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Droplet className="text-company-darkGreen shrink-0" size={20} />
             <div>
               <h4 className="text-xs lg:text-sm font-bold text-company-darkGreen leading-tight">{t('feat4Title')}</h4>
