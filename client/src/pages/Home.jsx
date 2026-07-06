@@ -242,33 +242,33 @@ const Home = () => {
 
       {/* Team Section */}
       <section id="team" className="py-24 px-12 bg-company-cream/30">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xl font-bold tracking-[0.2em] text-company-orange uppercase block mb-4">{t('teamSubtitle')}</span>
             <h2 className="text-5xl font-serif font-bold text-company-darkGreen mb-6">{t('teamTitle1')}<br/>{t('teamTitle2')}</h2>
             <p className="text-lg text-company-dark/60 max-w-2xl mx-auto">{t('teamDesc')}</p>
           </div>
           
-          <div className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-10 items-start bg-transparent mb-6">
-                {/* Left: Image */}
-                <div className="w-full md:w-[350px] flex-shrink-0">
+              <div key={index} className="flex flex-col bg-white p-6 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 border border-company-dark/5 group hover:-translate-y-1">
+                {/* Image */}
+                <div className="w-full mb-6 overflow-hidden rounded-2xl">
                   <img 
                     src={member.image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"} 
                     alt={member.name} 
-                    className="w-full aspect-square object-cover rounded-2xl shadow-lg"
+                    className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                {/* Right: Info */}
-                <div className="flex-1 py-4">
-                  <h3 className="text-4xl font-bold text-company-dark mb-3">{member.name}</h3>
-                  <p className="font-medium text-xl mb-6 leading-relaxed max-w-2xl text-[#d62828]">{member.role}</p>
+                {/* Info */}
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-2xl font-bold text-company-dark mb-2">{member.name}</h3>
+                  <p className="font-medium text-sm mb-6 leading-relaxed text-[#d62828]">{member.role}</p>
                   
                   {member.email && (
-                    <div className="flex items-center gap-3 text-company-dark/80 font-medium mt-8">
-                      <Mail size={28} className="text-[#d62828]" />
-                      <a href={`mailto:${member.email}`} className="transition-colors text-xl hover:text-[#d62828]">{member.email}</a>
+                    <div className="flex items-center gap-3 text-company-dark/80 font-medium mt-auto pt-5 border-t border-black/5">
+                      <Mail size={18} className="text-[#d62828]" />
+                      <a href={`mailto:${member.email}`} className="transition-colors text-sm hover:text-[#d62828] truncate">{member.email}</a>
                     </div>
                   )}
                 </div>
