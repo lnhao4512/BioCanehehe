@@ -61,8 +61,13 @@ const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
   const [modelScale, setModelScale] = useState(1);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) setModelScale(0.4);
-      else if (window.innerWidth < 1024) setModelScale(0.85);
+      const width = window.innerWidth;
+      if (width < 640) setModelScale(0.35);
+      else if (width < 768) setModelScale(0.45);
+      else if (width < 1024) setModelScale(0.6);
+      else if (width < 1280) setModelScale(0.75);
+      else if (width < 1440) setModelScale(0.85);
+      else if (width < 1600) setModelScale(0.9);
       else setModelScale(1);
     };
     handleResize();
