@@ -219,10 +219,14 @@ const ZoomHandler = ({ controlsRef }) => {
       ref={containerRef} 
       className={`w-full h-full relative group z-10 pointer-events-auto ${isFullscreen ? 'bg-[#f8f5f0]' : ''}`}
     >
-      {/* Invisible Interaction Zone */}
+      {/* Interaction Zone with Hover Effect */}
       <div 
         ref={setInteractionZone}
-        className={`absolute z-30 cursor-move ${isFullscreen ? 'inset-0 w-full h-full' : 'top-[25%] bottom-[15%] left-[10%] right-[10%] lg:left-[30%] lg:right-[30%]'}`}
+        className={`absolute z-30 cursor-move transition-all duration-500 rounded-[3rem] ${
+          isFullscreen 
+            ? 'inset-0 w-full h-full rounded-none' 
+            : 'top-[25%] bottom-[15%] left-[10%] right-[10%] lg:left-[30%] lg:right-[30%] hover:bg-company-green/[0.03] border-2 border-transparent hover:border-company-green/10 hover:shadow-[inset_0_0_60px_rgba(40,167,69,0.05)]'
+        }`}
       />
 
       <div className="w-full h-full relative">
