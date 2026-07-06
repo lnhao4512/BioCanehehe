@@ -117,7 +117,7 @@ const Home = () => {
         </div>
 
         {/* Feature Bar (Bottom) */}
-        <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-16 left-1/2 -translate-x-1/2 w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
+        <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-16 mx-auto w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
           <div id="bottom-bar" className="w-full bg-white/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-transform duration-100 ease-out will-change-transform hover:shadow-md hover:bg-white/95">
             <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Leaf className="text-company-darkGreen shrink-0" size={20} />
