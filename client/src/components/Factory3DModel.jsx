@@ -58,8 +58,20 @@ const Hotspot = React.memo(({ position, title, desc, align = 'right', dx = 40, d
 });
 
 const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
+  const [modelScale, setModelScale] = useState(1);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) setModelScale(0.7);
+      else if (window.innerWidth < 1024) setModelScale(0.85);
+      else setModelScale(1);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <group position={[0, -1, 0]}>
+    <group position={[0, -1, 0]} scale={[modelScale, modelScale, modelScale]}>
       {/* Circular Base */}
       <mesh receiveShadow position={[0, 0, 0]}>
         <cylinderGeometry args={[4, 4, 0.2, 64]} />
@@ -264,7 +276,7 @@ const ZoomHandler = ({ controlsRef }) => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-[80px] lg:top-[90px]'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-5 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-0 md:top-[80px] lg:top-[90px]'}`}>
         <div className="bg-white/95 backdrop-blur-md px-5 md:px-8 py-2.5 md:py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-xs md:text-sm font-medium text-company-dark/70 flex items-center justify-center gap-2 md:gap-3 border border-company-green/10 w-full md:w-auto text-center transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
           <MousePointer2 size={16} className="hidden md:block text-company-green/70" />
           <span>{t('dragRotate')}</span>
