@@ -260,7 +260,7 @@ const ZoomHandler = ({ controlsRef }) => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'bottom-36 md:bottom-40 lg:bottom-32'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'top-4 md:top-8' : 'top-[80px] lg:top-[90px]'}`}>
         <div className="bg-white/90 backdrop-blur-sm px-3 md:px-6 py-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.08)] text-[10px] md:text-xs font-medium text-company-dark/60 flex items-center justify-center gap-1 md:gap-2 border border-black/5 w-full md:w-auto text-center">
           <MousePointer2 size={12} className="hidden md:block" />
           <span>{t('dragRotate')}</span>
