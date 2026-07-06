@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Leaf, ChevronDown, Menu, X } from 'lucide-react';
+import { Leaf, ChevronDown, Menu, X, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const languages = [
   { code: 'vi', label: 'Tiếng Việt', flagUrl: 'https://flagcdn.com/w20/vn.png' },
@@ -13,6 +14,7 @@ const languages = [
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { isDark, toggleTheme } = useTheme();
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const langRef = useRef(null);
@@ -30,7 +32,7 @@ const Navbar = () => {
   const activeLang = languages.find(l => l.code === language) || languages[0];
 
   return (
-    <nav className="fixed w-full z-[100] bg-company-offWhite/80 backdrop-blur-md py-4 px-6 md:px-12 flex justify-between items-center top-0 shadow-sm">
+    <nav className="fixed w-full z-[100] bg-company-offWhite/80 dark:bg-gray-950/80 backdrop-blur-md py-4 px-6 md:px-12 flex justify-between items-center top-0 shadow-sm transition-colors duration-500">
       <Link 
         to="/" 
         className="flex items-center gap-2 md:gap-3 text-company-darkGreen cursor-pointer relative z-[101]"
@@ -59,6 +61,15 @@ const Navbar = () => {
       
       {/* Desktop Right Actions */}
       <div className="hidden md:flex gap-6 items-center">
+        {/* Theme Toggle */}
+        <button 
+          onClick={toggleTheme} 
+          className="p-2 rounded-full hover:bg-company-dark/5 dark:hover:bg-white/10 text-company-darkGreen dark:text-company-lighterGreen transition-colors"
+          title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
         {/* Custom Language Dropdown */}
         <div className="relative" ref={langRef}>
           <button 
@@ -129,6 +140,16 @@ const Navbar = () => {
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="py-2 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+              <span className="text-sm font-medium">Dark Mode</span>
+              <button 
+                onClick={toggleTheme} 
+                className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-company-darkGreen dark:text-company-lighterGreen"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
             </div>
 
             <div className="mt-4 flex flex-col gap-4">

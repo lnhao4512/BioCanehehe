@@ -28,11 +28,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-company-offWhite overflow-x-hidden">
+    <div className="min-h-screen bg-company-offWhite dark:bg-gray-950 overflow-x-hidden transition-colors duration-500">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] overflow-hidden">
+      <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
         
         {/* Full-width 3D Background */}
         <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-auto">
@@ -49,19 +49,19 @@ const Home = () => {
               <span className="text-sm font-bold tracking-[0.2em] text-company-green uppercase whitespace-nowrap">{t('greenEnergy')}</span>
             </div>
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen mb-6 md:mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen dark:text-white mb-6 md:mb-8"
               style={{ lineHeight: '1.35' }}
             >
               {t('heroTitle1')}<br />{t('heroTitle2')}<br />{t('heroTitle3')}
             </h1>
-            <p className="text-sm md:text-base lg:text-lg text-company-dark/70 mb-8 md:mb-10 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-company-dark/70 dark:text-gray-300 mb-8 md:mb-10 leading-relaxed">
               {t('heroDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <a href="#products" className="group bg-company-darkGreen text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full hover:bg-company-green transition-all duration-300 text-sm md:text-base font-medium flex items-center justify-center gap-2 whitespace-nowrap shadow-md hover:shadow-[0_8px_25px_rgba(20,50,30,0.3)] hover:scale-105 active:scale-95">
                 {t('exploreProducts')} <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1.5" />
               </a>
-              <a href="#brand" className="bg-white text-company-dark px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-company-dark/10 hover:border-company-dark/30 hover:bg-gray-50 transition-all duration-300 text-sm md:text-base font-medium text-center whitespace-nowrap shadow-sm hover:scale-105 active:scale-95">
+              <a href="#brand" className="bg-white dark:bg-gray-800 text-company-dark dark:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-company-dark/10 dark:border-gray-700 hover:border-company-dark/30 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm md:text-base font-medium text-center whitespace-nowrap shadow-sm hover:scale-105 active:scale-95">
                 {t('downloadProfile')}
               </a>
             </div>
@@ -118,7 +118,7 @@ const Home = () => {
 
         {/* Feature Bar (Bottom) */}
         <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-16 mx-auto w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
-          <div id="bottom-bar" className="w-full bg-white/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-transform duration-100 ease-out will-change-transform hover:shadow-md hover:bg-white/95">
+          <div id="bottom-bar" className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white dark:border-gray-800 shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-all duration-500 ease-out will-change-transform hover:shadow-md hover:bg-white/95 dark:hover:bg-gray-900/95">
             <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Leaf className="text-company-darkGreen shrink-0" size={20} />
             <div>
