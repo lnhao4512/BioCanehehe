@@ -69,10 +69,10 @@ const Home = () => {
           </FadeIn>
           
           {/* Center Column - Placeholder */}
-          <div className="h-[400px] md:h-[500px] xl:h-auto xl:col-span-4 2xl:col-span-6 pointer-events-none"></div>
+          <div className="h-[450px] md:h-[600px] xl:h-auto xl:col-span-4 2xl:col-span-6 pointer-events-none"></div>
 
           {/* Right Column - Cards */}
-          <FadeIn direction="right" className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 mt-12 xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
+          <FadeIn direction="right" className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 mt-20 md:mt-32 xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
             <div id="right-column" className="flex flex-col gap-6 w-full">
               {/* Card 1 */}
             <div className="bg-company-darkGreen rounded-[2rem] p-8 text-white relative overflow-hidden shadow-lg h-48 flex flex-col justify-between">
