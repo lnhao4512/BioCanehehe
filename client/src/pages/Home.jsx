@@ -34,11 +34,6 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
         
-        {/* Full-width 3D Background */}
-        <div className="absolute inset-x-0 top-0 bottom-32 lg:bottom-48 z-0 flex justify-center items-center pointer-events-auto">
-          <Factory3DModel />
-        </div>
-
         <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-center relative z-10 pointer-events-none">
           
           {/* Left Column - Text */}
@@ -68,8 +63,10 @@ const Home = () => {
           </div>
           </FadeIn>
           
-          {/* Center Column - Placeholder */}
-          <div className="h-[450px] md:h-[600px] xl:h-auto xl:col-span-4 2xl:col-span-6 pointer-events-none"></div>
+          {/* Center Column - 3D Model */}
+          <div className="h-[450px] md:h-[600px] xl:h-[700px] w-full xl:col-span-4 2xl:col-span-6 pointer-events-auto relative z-20">
+            <Factory3DModel />
+          </div>
 
           {/* Right Column - Cards */}
           <FadeIn direction="right" className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 mt-20 md:mt-32 xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
