@@ -32,7 +32,8 @@ const Navbar = () => {
   const activeLang = languages.find(l => l.code === language) || languages[0];
 
   return (
-    <nav className="fixed w-full z-[100] bg-company-offWhite/80 dark:bg-gray-950/80 backdrop-blur-md py-4 px-6 md:px-12 flex justify-between items-center top-0 shadow-sm transition-colors duration-500">
+    <>
+      <nav className="fixed w-full z-[100] bg-company-offWhite/80 dark:bg-gray-950/80 backdrop-blur-md py-4 px-6 md:px-12 flex justify-between items-center top-0 shadow-sm transition-colors duration-500">
       <Link 
         to="/" 
         className="flex items-center gap-2 md:gap-3 text-company-darkGreen cursor-pointer relative z-[101]"
@@ -116,26 +117,26 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-0 pt-24 bg-white dark:bg-gray-950 z-[100] flex flex-col px-6 pb-6 overflow-y-auto">
-          <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen dark:text-white">
-            <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('products')}</a>
-            <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('process')}</a>
-            <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('team')}</a>
-            <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('about')}</a>
-            <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('contact')}</a>
-            
-            {/* Removed redundant language and theme toggles from here since they are now in the top navbar */}
+      </nav>
 
-            <div className="mt-4 flex flex-col gap-4">
-              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-gray-100 rounded-xl text-company-dark font-medium">{t('login')}</Link>
-              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-company-green text-white rounded-xl font-medium">{t('contactNow')}</a>
-            </div>
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`md:hidden fixed inset-0 pt-24 bg-white dark:bg-gray-950 z-[90] flex flex-col px-6 pb-6 overflow-y-auto transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-8 invisible'}`}
+      >
+        <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen dark:text-white">
+          <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('products')}</a>
+          <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('process')}</a>
+          <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('team')}</a>
+          <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('about')}</a>
+          <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('contact')}</a>
+          
+          <div className="mt-4 flex flex-col gap-4">
+            <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-gray-100 dark:bg-gray-800 rounded-xl text-company-dark dark:text-white font-medium">{t('login')}</Link>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-company-green text-white rounded-xl font-medium">{t('contactNow')}</a>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </>
   );
 };
 
