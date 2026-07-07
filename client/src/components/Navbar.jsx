@@ -124,11 +124,11 @@ const Navbar = () => {
         className={`md:hidden fixed inset-0 pt-24 bg-white dark:bg-gray-950 z-[90] flex flex-col px-6 pb-6 overflow-y-auto transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-8 invisible'}`}
       >
         <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen dark:text-white">
-          <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('products')}</a>
-          <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('process')}</a>
-          <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('team')}</a>
-          <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('about')}</a>
-          <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('contact')}</a>
+          <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('products')}</a>
+          <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('process')}</a>
+          <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('team')}</a>
+          <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('about')}</a>
+          <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('contact')}</a>
           
           <div className="mt-4 flex flex-col gap-4">
             <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-gray-100 dark:bg-gray-800 rounded-xl text-company-dark dark:text-white font-medium">{t('login')}</Link>
