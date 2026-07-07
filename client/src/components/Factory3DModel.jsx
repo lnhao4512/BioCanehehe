@@ -62,13 +62,16 @@ const FactoryGeometry = ({ showHotspots, t, containerRef }) => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+      // Vertical stacked mode (1 column) -> full width available
       if (width < 640) setModelScale(0.35);
       else if (width < 768) setModelScale(0.45);
-      else if (width < 1024) setModelScale(0.6);
-      else if (width < 1280) setModelScale(0.75);
-      else if (width < 1440) setModelScale(0.85);
-      else if (width < 1600) setModelScale(0.9);
-      else setModelScale(1);
+      else if (width < 1024) setModelScale(0.65);
+      else if (width < 1280) setModelScale(0.85);
+      // Horizontal mode (3 columns) -> width is divided by 3, so model must shrink!
+      else if (width < 1440) setModelScale(0.5);
+      else if (width < 1600) setModelScale(0.65);
+      else if (width < 1800) setModelScale(0.8);
+      else setModelScale(0.95);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
