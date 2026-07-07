@@ -34,29 +34,29 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
         
-        <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-center relative z-10 pointer-events-none">
+        <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-8 lg:gap-10 2xl:gap-12 items-center relative z-10 pointer-events-none">
           
           {/* Left Column - Text */}
-          <FadeIn direction="left" delay={200} className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 pt-8 pointer-events-auto transition-transform duration-100 ease-out will-change-transform">
-            <div id="left-column">
+          <FadeIn direction="left" delay={200} className="lg:col-span-1 2xl:col-span-3 flex flex-col z-10 pt-8 pointer-events-auto transition-transform duration-100 ease-out will-change-transform min-w-0">
+            <div id="left-column" className="min-w-0">
             <div className="flex items-center gap-4 mb-8">
-              <div className="h-[1px] w-12 bg-company-green/40"></div>
-              <span className="text-sm font-bold tracking-[0.2em] text-company-green dark:text-company-lighterGreen uppercase whitespace-nowrap">{t('greenEnergy')}</span>
+              <div className="h-[1px] w-12 bg-company-green/40 shrink-0"></div>
+              <span className="text-sm font-bold tracking-[0.2em] text-company-green dark:text-company-lighterGreen uppercase break-words">NĂNG LƯỢNG XANH TỪ THIÊN NHIÊN</span>
             </div>
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-[60px] font-serif font-bold text-company-darkGreen dark:text-white mb-6 md:mb-8"
-              style={{ lineHeight: '1.35' }}
+              className="text-4xl md:text-5xl lg:text-5xl 2xl:text-[60px] font-serif font-bold text-company-darkGreen dark:text-white mb-6 md:mb-8 break-words"
+              style={{ lineHeight: '1.35', wordBreak: 'break-word' }}
             >
               {t('heroTitle1')}<br />{t('heroTitle2')}<br />{t('heroTitle3')}
             </h1>
-            <p className="text-sm md:text-base lg:text-lg text-company-dark/70 dark:text-gray-300 mb-8 md:mb-10 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-company-dark/70 dark:text-gray-300 mb-8 md:mb-10 leading-relaxed break-words">
               {t('heroDesc')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <a href="#products" className="group bg-company-darkGreen text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full hover:bg-company-green transition-all duration-300 text-sm md:text-base font-medium flex items-center justify-center gap-2 whitespace-nowrap shadow-md hover:shadow-[0_8px_25px_rgba(20,50,30,0.3)] hover:scale-105 active:scale-95">
-                {t('exploreProducts')} <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+            <div className="flex flex-wrap sm:flex-row gap-4 mt-2">
+              <a href="#products" className="group bg-company-darkGreen text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full hover:bg-company-green transition-all duration-300 text-sm md:text-base font-medium flex items-center justify-center gap-2 shadow-md hover:shadow-[0_8px_25px_rgba(20,50,30,0.3)] hover:scale-105 active:scale-95 flex-1 sm:flex-none text-center min-w-[max-content]">
+                {t('exploreProducts')} <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1.5 shrink-0" />
               </a>
-              <a href="#brand" className="bg-white dark:bg-gray-800 text-company-dark dark:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-company-dark/10 dark:border-gray-700 hover:border-company-dark/30 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm md:text-base font-medium text-center whitespace-nowrap shadow-sm hover:scale-105 active:scale-95">
+              <a href="#brand" className="bg-white dark:bg-gray-800 text-company-dark dark:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full border border-company-dark/10 dark:border-gray-700 hover:border-company-dark/30 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm md:text-base font-medium text-center shadow-sm hover:scale-105 active:scale-95 flex-1 sm:flex-none min-w-[max-content]">
                 {t('downloadProfile')}
               </a>
             </div>
@@ -64,49 +64,49 @@ const Home = () => {
           </FadeIn>
           
           {/* Center Column - 3D Model */}
-          <div className="h-[450px] md:h-[600px] xl:h-[700px] w-full xl:col-span-4 2xl:col-span-6 pointer-events-auto relative z-20">
+          <div className="h-[450px] md:h-[600px] 2xl:h-[700px] w-full lg:col-span-1 2xl:col-span-6 pointer-events-auto relative z-20 min-w-0">
             <Factory3DModel />
           </div>
 
           {/* Right Column - Cards */}
-          <FadeIn direction="right" className="xl:col-span-4 2xl:col-span-3 flex flex-col z-10 mt-20 md:mt-32 xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform" delay={400}>
-            <div id="right-column" className="flex flex-col gap-6 w-full">
+          <FadeIn direction="right" className="lg:col-span-2 2xl:col-span-3 flex flex-col z-10 mt-10 md:mt-16 2xl:mt-0 pointer-events-auto transition-transform duration-100 ease-out will-change-transform min-w-0" delay={400}>
+            <div id="right-column" className="flex lg:flex-row 2xl:flex-col gap-6 w-full max-w-full overflow-hidden">
               {/* Card 1 */}
-            <div className="bg-company-darkGreen rounded-[2rem] p-8 text-white relative overflow-hidden shadow-lg h-48 flex flex-col justify-between">
-              <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/5 rounded-full"></div>
-              <Leaf className="text-company-lighterGreen" size={32} />
+            <div className="bg-company-darkGreen rounded-[2rem] p-6 lg:p-8 text-white relative overflow-hidden shadow-lg h-auto min-h-[160px] 2xl:h-48 flex flex-col justify-between flex-1 shrink-0">
+              <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/5 rounded-full pointer-events-none"></div>
+              <Leaf className="text-company-lighterGreen mb-4 lg:mb-0" size={32} />
               <div>
-                <h3 className="text-3xl md:text-4xl xl:text-5xl font-bold font-serif mb-1 md:mb-2">75M</h3>
+                <h3 className="text-3xl md:text-4xl 2xl:text-5xl font-bold font-serif mb-1 md:mb-2 break-words">75M</h3>
                 <p className="text-white/70 text-xs md:text-sm font-medium">{t('litersPerYear')}</p>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 lg:gap-6 flex-[2] shrink-0">
               {/* Card 2 */}
-              <div className="bg-company-lighterGreen rounded-[2rem] p-6 text-white shadow-md h-40 flex flex-col justify-between">
-                <Zap className="text-white/90" size={24} />
+              <div className="bg-company-lighterGreen rounded-[2rem] p-5 lg:p-6 text-white shadow-md h-auto min-h-[140px] 2xl:h-40 flex flex-col justify-between">
+                <Zap className="text-white/90 mb-3 lg:mb-0" size={24} />
                 <div>
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold font-serif mb-1">99.5%</h3>
-                  <p className="text-white/90 text-xs md:text-sm font-medium">{t('purity')}</p>
+                  <h3 className="text-xl md:text-2xl 2xl:text-3xl font-bold font-serif mb-1 break-words">99.5%</h3>
+                  <p className="text-white/90 text-[10px] md:text-xs lg:text-sm font-medium">{t('purity')}</p>
                 </div>
               </div>
               
               {/* Card 3 */}
-              <div className="bg-[#e77a63] rounded-[2rem] p-6 text-white shadow-md h-40 flex flex-col justify-between">
-                <TrendingDown className="text-white/90" size={24} />
+              <div className="bg-[#e77a63] rounded-[2rem] p-5 lg:p-6 text-white shadow-md h-auto min-h-[140px] 2xl:h-40 flex flex-col justify-between">
+                <TrendingDown className="text-white/90 mb-3 lg:mb-0" size={24} />
                 <div>
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold font-serif mb-1">-40%</h3>
-                  <p className="text-white/90 text-xs md:text-sm font-medium">{t('co2Reduction')}</p>
+                  <h3 className="text-xl md:text-2xl 2xl:text-3xl font-bold font-serif mb-1 break-words">-40%</h3>
+                  <p className="text-white/90 text-[10px] md:text-xs lg:text-sm font-medium">{t('co2Reduction')}</p>
                 </div>
               </div>
             </div>
             
             {/* Card 4 */}
-            <div className="bg-[#fdf8e7] dark:bg-gray-800 rounded-[2rem] p-6 text-company-darkGreen dark:text-white flex items-start gap-5 shadow-sm border border-[#f0eadd] dark:border-gray-700 transition-colors duration-500">
+            <div className="bg-[#fdf8e7] dark:bg-gray-800 rounded-[2rem] p-5 lg:p-6 text-company-darkGreen dark:text-white flex items-start gap-4 lg:gap-5 shadow-sm border border-[#f0eadd] dark:border-gray-700 transition-colors duration-500 flex-[1.5] shrink-0 h-auto">
               <Award className="text-company-green dark:text-company-lighterGreen flex-shrink-0 mt-1" size={24} />
-              <div>
-                <h3 className="font-bold text-base mb-1">{t('certTitle')}</h3>
-                <p className="text-company-darkGreen/60 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-500">{t('certDesc')}</p>
+              <div className="min-w-0">
+                <h3 className="font-bold text-sm lg:text-base mb-1 truncate">{t('certTitle')}</h3>
+                <p className="text-company-darkGreen/60 dark:text-gray-400 text-xs lg:text-sm leading-relaxed transition-colors duration-500 break-words line-clamp-3">{t('certDesc')}</p>
               </div>
             </div>
             </div>
