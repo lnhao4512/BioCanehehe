@@ -210,7 +210,7 @@ const Factory3DModel = () => {
   return (
     <div 
       ref={containerRef} 
-      className={`w-full h-full relative group z-10 pointer-events-auto ${isFullscreen ? 'bg-[#f8f5f0]' : ''}`}
+      className={`w-full h-full relative group z-10 pointer-events-auto flex flex-col ${isFullscreen ? 'bg-[#f8f5f0]' : ''}`}
     >
       {/* Interaction Zone with Hover Effect */}
       <div 
@@ -222,7 +222,7 @@ const Factory3DModel = () => {
         }`}
       />
 
-      <div className="w-full h-full relative">
+      <div className="flex-1 min-h-0 w-full relative">
         <Canvas 
           shadows 
           camera={{ position: [10, 8, 10], fov: 45 }}
@@ -256,7 +256,7 @@ const Factory3DModel = () => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-3 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'bottom-4 md:bottom-8' : 'bottom-0 md:bottom-4'}`}>
+      <div className={`flex flex-col items-center gap-2 md:gap-3 z-40 pointer-events-auto transition-all duration-300 w-[95%] md:w-auto ${isFullscreen ? 'absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2' : 'relative mt-2 mb-4 self-center'}`}>
         <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-5 md:px-8 py-2.5 md:py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-xs md:text-sm font-medium text-company-dark/70 dark:text-gray-300 flex items-center justify-center gap-2 md:gap-3 border border-company-green/10 dark:border-gray-800 w-full md:w-auto text-center transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
           <MousePointer2 size={16} className="hidden md:block text-company-green/70 dark:text-company-lighterGreen" />
           <span>{t('dragRotate')}</span>
