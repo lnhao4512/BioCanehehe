@@ -272,7 +272,7 @@ const Factory3DModel = () => {
       </div>
 
       {/* Controls Overlay */}
-      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-3 z-40 pointer-events-auto transition-all duration-700 ease-out w-full px-2 max-w-[600px] ${isFullscreen ? 'bottom-6 md:bottom-10 scale-100' : 'bottom-4 md:bottom-6 scale-95 md:scale-100'}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-3 z-40 pointer-events-auto transition-all duration-700 ease-out w-full px-2 max-w-[600px] ${isFullscreen ? 'bottom-6 md:bottom-10 scale-100' : 'bottom-0 md:-bottom-4 lg:-bottom-8 scale-95 md:scale-100'}`}>
         <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4 md:px-8 py-2 md:py-3 rounded-2xl md:rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-xs md:text-sm font-medium text-company-dark/70 dark:text-gray-300 flex flex-wrap items-center justify-center gap-2 md:gap-3 border border-company-green/10 dark:border-gray-800 w-full text-center transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
           <MousePointer2 size={16} className="hidden sm:block text-company-green/70 dark:text-company-lighterGreen shrink-0" />
           <span className="break-words">{t('dragRotate')}</span>
