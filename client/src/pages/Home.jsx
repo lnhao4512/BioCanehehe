@@ -289,25 +289,25 @@ const Home = () => {
                 />
                 <div className="absolute -bottom-10 -right-10 bg-company-darkGreen text-white p-8 rounded-3xl shadow-xl w-64 hidden md:block">
                   <Leaf size={32} className="text-company-lighterGreen mb-4" />
-                  <h4 className="text-2xl font-serif font-bold mb-2">10+ Năm</h4>
-                  <p className="text-white/70 text-sm">Nghiên cứu và phát triển công nghệ Ethanol Sinh học.</p>
+                  <h4 className="text-2xl font-serif font-bold mb-2">{t('aboutYearTitle')}</h4>
+                  <p className="text-white/70 text-sm">{t('aboutYearDesc')}</p>
                 </div>
               </div>
             </FadeIn>
             
             <FadeIn direction="right" delay={400} className="flex flex-col justify-center">
-              <span className="text-xl font-bold tracking-[0.2em] text-company-orange uppercase block mb-4">Về Chúng Tôi</span>
-              <h2 className="text-4xl font-serif font-bold text-company-darkGreen mb-6">Khởi nguồn của<br/>Năng Lượng Tái Tạo</h2>
+              <span className="text-xl font-bold tracking-[0.2em] text-company-orange uppercase block mb-4">{t('aboutSubtitle')}</span>
+              <h2 className="text-4xl font-serif font-bold text-company-darkGreen mb-6">{t('aboutTitle1')}<br/>{t('aboutTitle2')}</h2>
               <p className="text-company-dark/70 leading-relaxed mb-8 text-lg">
-                Sứ mệnh của chúng tôi không chỉ dừng lại ở việc sản xuất nhiên liệu. Chúng tôi kiến tạo một hệ sinh thái tuần hoàn, nơi bã mía cung cấp nhiệt lượng, nước được tái sử dụng và ethanol thay thế nhiên liệu hóa thạch.
+                {t('aboutDesc')}
               </p>
               
               <ul className="space-y-6">
                 {[
-                  "Giảm 40% lượng khí thải CO2 ra môi trường",
-                  "Phát triển nguồn năng lượng tự chủ và tái tạo",
-                  "Áp dụng công nghệ chưng cất Zero-Waste",
-                  "Gắn kết và phát triển cùng cộng đồng nông nghiệp"
+                  t('aboutFeat1'),
+                  t('aboutFeat2'),
+                  t('aboutFeat3'),
+                  t('aboutFeat4')
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-4">
                     <CheckCircle2 className="text-company-green flex-shrink-0 mt-1" size={20} />
@@ -321,8 +321,8 @@ const Home = () => {
           {/* Core Values */}
           <div>
             <FadeIn direction="up" className="text-center mb-16">
-              <span className="text-xl font-bold tracking-[0.2em] text-company-orange uppercase block mb-4">Core Values</span>
-              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-company-darkGreen">Giá Trị Cốt Lõi</h2>
+              <span className="text-xl font-bold tracking-[0.2em] text-company-orange uppercase block mb-4">{t('coreValuesSubtitle')}</span>
+              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-company-darkGreen">{t('coreValuesTitle')}</h2>
             </FadeIn>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -330,24 +330,24 @@ const Home = () => {
                 <div className="bg-company-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                   <Globe className="text-company-green" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">Bền vững</h3>
-                <p className="text-company-dark/60 leading-relaxed">Mọi quyết định của chúng tôi đều đặt yếu tố tác động đến môi trường lên hàng đầu, hướng tới một tương lai xanh thật sự.</p>
+                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue1Title')}</h3>
+                <p className="text-company-dark/60 leading-relaxed">{t('coreValue1Desc')}</p>
               </FadeIn>
               
               <FadeIn direction="up" delay={400} className="bg-company-cream/30 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300">
                 <div className="bg-company-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                   <Shield className="text-company-orange" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">Minh Bạch</h3>
-                <p className="text-company-dark/60 leading-relaxed">Từ quy trình thu mua nguyên liệu đến công nghệ sản xuất, chúng tôi cam kết chất lượng chuẩn xác 99.5%.</p>
+                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue2Title')}</h3>
+                <p className="text-company-dark/60 leading-relaxed">{t('coreValue2Desc')}</p>
               </FadeIn>
 
               <FadeIn direction="up" delay={600} className="bg-company-cream/30 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300">
                 <div className="bg-blue-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                   <Droplet className="text-blue-500" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">Tiên Phong</h3>
-                <p className="text-company-dark/60 leading-relaxed">Không ngừng nghiên cứu các kỹ thuật lên men và chưng cất mới nhất để tối ưu hóa hiệu suất và tiết kiệm tài nguyên.</p>
+                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue3Title')}</h3>
+                <p className="text-company-dark/60 leading-relaxed">{t('coreValue3Desc')}</p>
               </FadeIn>
             </div>
           </div>

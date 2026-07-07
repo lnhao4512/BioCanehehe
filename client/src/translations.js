@@ -28,7 +28,16 @@ export const translations = {
     becomePartner: "Trở thành đối tác", downloadProfile2: "Tải hồ sơ năng lực", footerDesc: "Nhà sản xuất ethanol sinh học từ mía hàng đầu Việt Nam — hướng tới tương lai năng lượng sạch và bền vững.",
     footerProd: "Sản phẩm", footerBio: "Phụ phẩm Bio", footerCatalog: "Catalog 2026", footerCompany: "Công ty", footerAbout: "Về BioCane",
     footerNews: "Tin tức", footerJobs: "Tuyển dụng", footerContact: "Liên hệ", footerAddress: "KCN Mía Đường, Hậu Giang, Việt Nam",
-    footerRights: "© 2026 BioCane Sugarcane Ethanol. Mọi quyền được bảo lưu.", footerPrivacy: "Chính sách bảo mật", footerTerms: "Điều khoản sử dụng"
+    footerRights: "© 2026 BioCane Sugarcane Ethanol. Mọi quyền được bảo lưu.", footerPrivacy: "Chính sách bảo mật", footerTerms: "Điều khoản sử dụng",
+    aboutSubtitle: "Về Chúng Tôi", aboutTitle1: "Khởi nguồn của", aboutTitle2: "Năng Lượng Tái Tạo",
+    aboutDesc: "Sứ mệnh của chúng tôi không chỉ dừng lại ở việc sản xuất nhiên liệu. Chúng tôi kiến tạo một hệ sinh thái tuần hoàn, nơi bã mía cung cấp nhiệt lượng, nước được tái sử dụng và ethanol thay thế nhiên liệu hóa thạch.",
+    aboutYearTitle: "10+ Năm", aboutYearDesc: "Nghiên cứu và phát triển công nghệ Ethanol Sinh học.",
+    aboutFeat1: "Giảm 40% lượng khí thải CO2 ra môi trường", aboutFeat2: "Phát triển nguồn năng lượng tự chủ và tái tạo",
+    aboutFeat3: "Áp dụng công nghệ chưng cất Zero-Waste", aboutFeat4: "Gắn kết và phát triển cùng cộng đồng nông nghiệp",
+    coreValuesSubtitle: "Core Values", coreValuesTitle: "Giá Trị Cốt Lõi",
+    coreValue1Title: "Bền vững", coreValue1Desc: "Mọi quyết định của chúng tôi đều đặt yếu tố tác động đến môi trường lên hàng đầu, hướng tới một tương lai xanh thật sự.",
+    coreValue2Title: "Minh Bạch", coreValue2Desc: "Từ quy trình thu mua nguyên liệu đến công nghệ sản xuất, chúng tôi cam kết chất lượng chuẩn xác 99.5%.",
+    coreValue3Title: "Tiên Phong", coreValue3Desc: "Không ngừng nghiên cứu các kỹ thuật lên men và chưng cất mới nhất để tối ưu hóa hiệu suất và tiết kiệm tài nguyên."
   },
   en: {
     products: "Products", process: "Process", team: "Team", about: "About Us", contact: "Contact", login: "Login", contactNow: "Contact Now",
@@ -59,7 +68,16 @@ export const translations = {
     becomePartner: "Become a Partner", downloadProfile2: "Download Company Profile", footerDesc: "Vietnam's leading producer of bioethanol from sugarcane — heading towards a future of clean and sustainable energy.",
     footerProd: "Products", footerBio: "Bio Byproducts", footerCatalog: "Catalog 2026", footerCompany: "Company", footerAbout: "About BioCane",
     footerNews: "News", footerJobs: "Careers", footerContact: "Contact", footerAddress: "Sugarcane Industrial Park, Hau Giang, Vietnam",
-    footerRights: "© 2026 BioCane Sugarcane Ethanol. All rights reserved.", footerPrivacy: "Privacy Policy", footerTerms: "Terms of Use"
+    footerRights: "© 2026 BioCane Sugarcane Ethanol. All rights reserved.", footerPrivacy: "Privacy Policy", footerTerms: "Terms of Use",
+    aboutSubtitle: "About Us", aboutTitle1: "The origin of", aboutTitle2: "Renewable Energy",
+    aboutDesc: "Our mission goes beyond fuel production. We create a circular ecosystem where bagasse provides heat, water is reused, and ethanol replaces fossil fuels.",
+    aboutYearTitle: "10+ Years", aboutYearDesc: "Research and development of Bioethanol technology.",
+    aboutFeat1: "Reduce environmental CO2 emissions by 40%", aboutFeat2: "Develop autonomous and renewable energy sources",
+    aboutFeat3: "Apply Zero-Waste distillation technology", aboutFeat4: "Connect and develop with the agricultural community",
+    coreValuesSubtitle: "Core Values", coreValuesTitle: "Core Values",
+    coreValue1Title: "Sustainable", coreValue1Desc: "All our decisions put environmental impact first, moving towards a truly green future.",
+    coreValue2Title: "Transparent", coreValue2Desc: "From raw material procurement to production technology, we commit to exact 99.5% quality.",
+    coreValue3Title: "Pioneering", coreValue3Desc: "Constantly researching the latest fermentation and distillation techniques to optimize efficiency and save resources."
   },
   ja: {
     products: "製品", process: "プロセス", team: "チーム", about: "会社概要", contact: "お問い合わせ", login: "ログイン", contactNow: "今すぐ連絡",
@@ -90,7 +108,16 @@ export const translations = {
     becomePartner: "パートナーになる", downloadProfile2: "会社概要をダウンロード", footerDesc: "ベトナムのサトウキビ由来バイオエタノールトップメーカー。",
     footerProd: "製品", footerBio: "バイオ副産物", footerCatalog: "カタログ 2026", footerCompany: "会社", footerAbout: "BioCaneについて",
     footerNews: "ニュース", footerJobs: "採用情報", footerContact: "お問い合わせ", footerAddress: "ハウザン省 サトウキビ工業団地、ベトナム",
-    footerRights: "© 2026 BioCane Sugarcane Ethanol. 無断複写・転載を禁じます。", footerPrivacy: "プライバシーポリシー", footerTerms: "利用規約"
+    footerRights: "© 2026 BioCane Sugarcane Ethanol. 無断複写・転載を禁じます。", footerPrivacy: "プライバシーポリシー", footerTerms: "利用規約",
+    aboutSubtitle: "会社概要", aboutTitle1: "再生可能エネルギーの", aboutTitle2: "起源",
+    aboutDesc: "私たちの使命は燃料生産にとどまりません。バガスが熱を提供し、水が再利用され、エタノールが化石燃料に取って代わる循環型エコシステムを創造します。",
+    aboutYearTitle: "10+ 年", aboutYearDesc: "バイオエタノール技術の研究と開発。",
+    aboutFeat1: "環境へのCO2排出量を40%削減", aboutFeat2: "自律的で再生可能なエネルギー源の開発",
+    aboutFeat3: "ゼロ・ウェイスト蒸留技術の適用", aboutFeat4: "農業コミュニティとの連携と発展",
+    coreValuesSubtitle: "コアバリュー", coreValuesTitle: "コアバリュー",
+    coreValue1Title: "持続可能性", coreValue1Desc: "私たちのすべての決定は環境への影響を第一に考え、真にグリーンな未来に向かっています。",
+    coreValue2Title: "透明性", coreValue2Desc: "原材料の調達から生産技術まで、正確な99.5%の品質をお約束します。",
+    coreValue3Title: "パイオニア", coreValue3Desc: "効率を最適化し、資源を節約するために、最新の発酵および蒸留技術を絶えず研究しています。"
   },
   ko: {
     products: "제품", process: "프로세스", team: "팀", about: "회사 소개", contact: "연락처", login: "로그인", contactNow: "지금 문의",
@@ -121,7 +148,16 @@ export const translations = {
     becomePartner: "파트너 되기", downloadProfile2: "회사 소개서 다운로드", footerDesc: "베트남 최고의 사탕수수 유래 바이오 에탄올 생산 업체.",
     footerProd: "제품", footerBio: "바이오 부산물", footerCatalog: "카탈로그 2026", footerCompany: "회사", footerAbout: "BioCane 소개",
     footerNews: "뉴스", footerJobs: "채용", footerContact: "연락처", footerAddress: "베트남 허우장 사탕수수 산업단지",
-    footerRights: "© 2026 BioCane Sugarcane Ethanol. 모든 권리 보유.", footerPrivacy: "개인정보 처리방침", footerTerms: "이용 약관"
+    footerRights: "© 2026 BioCane Sugarcane Ethanol. 모든 권리 보유.", footerPrivacy: "개인정보 처리방침", footerTerms: "이용 약관",
+    aboutSubtitle: "회사 소개", aboutTitle1: "재생 에너지의", aboutTitle2: "기원",
+    aboutDesc: "우리의 사명은 연료 생산에 그치지 않습니다. 바가스가 열을 제공하고, 물이 재사용되며, 에탄올이 화석 연료를 대체하는 순환 생태계를 만듭니다.",
+    aboutYearTitle: "10+ 년", aboutYearDesc: "바이오 에탄올 기술 연구 및 개발.",
+    aboutFeat1: "환경에 대한 CO2 배출량 40% 감소", aboutFeat2: "자율적이고 재생 가능한 에너지원 개발",
+    aboutFeat3: "무폐기물 증류 기술 적용", aboutFeat4: "농업 커뮤니티와의 연결 및 발전",
+    coreValuesSubtitle: "핵심 가치", coreValuesTitle: "핵심 가치",
+    coreValue1Title: "지속 가능성", coreValue1Desc: "우리의 모든 결정은 환경적 영향을 최우선으로 고려하여 진정으로 녹색 미래를 향해 나아갑니다.",
+    coreValue2Title: "투명성", coreValue2Desc: "원자재 조달부터 생산 기술까지, 우리는 정확한 99.5% 품질을 약속합니다.",
+    coreValue3Title: "선구적", coreValue3Desc: "효율성을 최적화하고 자원을 절약하기 위해 최신 발효 및 증류 기술을 지속적으로 연구합니다."
   },
   zh: {
     products: "产品", process: "工艺", team: "团队", about: "关于我们", contact: "联系我们", login: "登录", contactNow: "立即联系",
@@ -152,6 +188,15 @@ export const translations = {
     becomePartner: "成为合作伙伴", downloadProfile2: "下载公司简介", footerDesc: "越南领先的甘蔗生物乙醇生产商——迈向清洁与可持续能源的未来。",
     footerProd: "产品", footerBio: "生物副产品", footerCatalog: "目录 2026", footerCompany: "公司", footerAbout: "关于 BioCane",
     footerNews: "新闻", footerJobs: "招贤纳士", footerContact: "联系我们", footerAddress: "越南后江甘蔗工业园",
-    footerRights: "© 2026 BioCane Sugarcane Ethanol. 保留所有权利。", footerPrivacy: "隐私政策", footerTerms: "使用条款"
+    footerRights: "© 2026 BioCane Sugarcane Ethanol. 保留所有权利。", footerPrivacy: "隐私政策", footerTerms: "使用条款",
+    aboutSubtitle: "关于我们", aboutTitle1: "可再生能源的", aboutTitle2: "起源",
+    aboutDesc: "我们的使命不仅限于燃料生产。我们创造了一个循环生态系统，其中甘蔗渣提供热量，水被重复利用，乙醇取代化石燃料。",
+    aboutYearTitle: "10+ 年", aboutYearDesc: "生物乙醇技术的研究与开发。",
+    aboutFeat1: "减少40%的二氧化碳排放", aboutFeat2: "开发自主和可再生能源",
+    aboutFeat3: "应用零废弃蒸馏技术", aboutFeat4: "与农业社区联系和发展",
+    coreValuesSubtitle: "核心价值", coreValuesTitle: "核心价值",
+    coreValue1Title: "可持续", coreValue1Desc: "我们的所有决定都将环境影响放在首位，迈向真正绿色的未来。",
+    coreValue2Title: "透明", coreValue2Desc: "从原材料采购到生产技术，我们承诺准确的99.5%质量。",
+    coreValue3Title: "开拓", coreValue3Desc: "不断研究最新的发酵和蒸馏技术，以优化效率并节约资源。"
   }
 };
