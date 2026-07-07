@@ -35,7 +35,7 @@ const Home = () => {
       <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
         
         {/* Full-width 3D Background */}
-        <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-auto">
+        <div className="absolute inset-x-0 top-0 bottom-32 lg:bottom-48 z-0 flex justify-center items-center pointer-events-auto">
           <Factory3DModel />
         </div>
 
@@ -117,7 +117,7 @@ const Home = () => {
         </div>
 
         {/* Feature Bar (Bottom) */}
-        <FadeIn direction="up" delay={600} className="relative mt-12 xl:mt-16 mx-auto w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
+        <FadeIn direction="up" delay={600} className="relative mt-24 xl:mt-32 mx-auto w-[95%] xl:w-[90%] max-w-[1200px] z-20 pointer-events-auto pb-12">
           <div id="bottom-bar" className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-[2rem] xl:rounded-full border border-white dark:border-gray-800 shadow-sm flex flex-wrap justify-between items-center px-6 xl:px-8 py-4 gap-y-4 gap-x-2 transition-all duration-500 ease-out will-change-transform hover:shadow-md hover:bg-white/95 dark:hover:bg-gray-900/95">
             <div className="flex items-center gap-3 w-[48%] xl:w-auto">
             <Leaf className="text-company-darkGreen dark:text-company-lighterGreen shrink-0" size={20} />
