@@ -174,6 +174,15 @@ const Factory3DModel = () => {
   const controlsRef = useRef();
   const containerRef = useRef();
   const [interactionZone, setInteractionZone] = useState(null);
+  const [isLeftMouseDown, setIsLeftMouseDown] = useState(false);
+
+  useEffect(() => {
+    const handlePointerUp = (e) => {
+      if (e.button === 0) setIsLeftMouseDown(false);
+    };
+    window.addEventListener('pointerup', handlePointerUp);
+    return () => window.removeEventListener('pointerup', handlePointerUp);
+  }, []);
 
   const handleReset = () => {
     if (controlsRef.current) {
@@ -221,6 +230,7 @@ const Factory3DModel = () => {
       {/* Interaction Zone with Hover Effect */}
       <div 
         ref={setInteractionZone}
+        onPointerDown={(e) => { if (e.button === 0) setIsLeftMouseDown(true); }}
         className={`absolute z-30 cursor-grab active:cursor-grabbing transition-all duration-500 ${
           isFullscreen 
             ? 'inset-0 w-full h-full' 
@@ -253,7 +263,7 @@ const Factory3DModel = () => {
             autoRotate={autoRotate}
             autoRotateSpeed={1}
             enablePan={isFullscreen}
-            enableZoom={isFullscreen}
+            enableZoom={isFullscreen || isLeftMouseDown}
             minDistance={2}
             maxDistance={30}
             maxPolarAngle={Math.PI / 2 - 0.1} // Prevent going below ground
