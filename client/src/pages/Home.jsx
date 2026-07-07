@@ -4,7 +4,7 @@ import Factory3DModel from '../components/Factory3DModel';
 import { Leaf, Zap, TrendingDown, Award, ArrowRight, Phone, Mail, MapPin, RefreshCw, Shield, Droplet, CheckCircle2, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import FadeIn from '../components/FadeIn';
-
+import HoverGlowCard from '../components/HoverGlowCard';
 const Home = () => {
   const { t } = useLanguage();
   const [teamMembers, setTeamMembers] = React.useState([]);
@@ -169,14 +169,14 @@ const Home = () => {
               { num: '03', title: t('process3Title'), desc: t('process3Desc'), icon: <TrendingDown size={20} className="text-company-lighterGreen" /> },
               { num: '04', title: t('process4Title'), desc: t('process4Desc'), icon: <TrendingDown size={20} className="text-company-orange" /> }
             ].map((step, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group border border-company-dark/5">
+              <HoverGlowCard key={idx} containerClassName="rounded-3xl shadow-sm bg-white" className="p-8 group">
                 <div className="text-7xl font-serif font-bold text-company-dark/5 absolute -right-2 top-4 group-hover:text-company-green/5 transition-colors">{step.num}</div>
                 <div className="w-12 h-12 bg-company-cream rounded-full flex items-center justify-center mb-16 relative z-10">
                   {step.icon}
                 </div>
                 <h3 className="text-xl font-bold font-serif mb-4 text-company-darkGreen relative z-10">{step.title}</h3>
                 <p className="text-company-dark/60 text-sm leading-relaxed relative z-10">{step.desc}</p>
-              </div>
+              </HoverGlowCard>
             ))}
           </div>
         </div>
@@ -248,7 +248,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col bg-white p-5 xl:p-6 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 border border-company-dark/5 group hover:-translate-y-1">
+              <HoverGlowCard key={index} containerClassName="rounded-3xl shadow-sm bg-white" className="flex flex-col p-5 xl:p-6 group">
                 {/* Image */}
                 <div className="w-full mb-5 overflow-hidden rounded-2xl">
                   <img 
@@ -269,7 +269,7 @@ const Home = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </HoverGlowCard>
             ))}
           </div>
         </div>
@@ -326,28 +326,34 @@ const Home = () => {
             </FadeIn>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <FadeIn direction="up" delay={200} className="bg-company-cream/30 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-company-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Globe className="text-company-green" size={28} />
-                </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue1Title')}</h3>
-                <p className="text-company-dark/60 leading-relaxed">{t('coreValue1Desc')}</p>
+              <FadeIn direction="up" delay={200} className="h-full">
+                <HoverGlowCard containerClassName="rounded-[2rem] shadow-sm bg-company-cream/30" className="p-10">
+                  <div className="bg-company-green/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                    <Globe className="text-company-green" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue1Title')}</h3>
+                  <p className="text-company-dark/60 leading-relaxed">{t('coreValue1Desc')}</p>
+                </HoverGlowCard>
               </FadeIn>
               
-              <FadeIn direction="up" delay={400} className="bg-company-cream/30 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-company-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Shield className="text-company-orange" size={28} />
-                </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue2Title')}</h3>
-                <p className="text-company-dark/60 leading-relaxed">{t('coreValue2Desc')}</p>
+              <FadeIn direction="up" delay={400} className="h-full">
+                <HoverGlowCard containerClassName="rounded-[2rem] shadow-sm bg-company-cream/30" className="p-10">
+                  <div className="bg-company-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                    <Shield className="text-company-orange" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue2Title')}</h3>
+                  <p className="text-company-dark/60 leading-relaxed">{t('coreValue2Desc')}</p>
+                </HoverGlowCard>
               </FadeIn>
 
-              <FadeIn direction="up" delay={600} className="bg-company-cream/30 p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-blue-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Droplet className="text-blue-500" size={28} />
-                </div>
-                <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue3Title')}</h3>
-                <p className="text-company-dark/60 leading-relaxed">{t('coreValue3Desc')}</p>
+              <FadeIn direction="up" delay={600} className="h-full">
+                <HoverGlowCard containerClassName="rounded-[2rem] shadow-sm bg-company-cream/30" className="p-10">
+                  <div className="bg-blue-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                    <Droplet className="text-blue-500" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-company-darkGreen mb-4">{t('coreValue3Title')}</h3>
+                  <p className="text-company-dark/60 leading-relaxed">{t('coreValue3Desc')}</p>
+                </HoverGlowCard>
               </FadeIn>
             </div>
           </div>
