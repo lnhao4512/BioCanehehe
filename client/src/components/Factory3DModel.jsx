@@ -47,7 +47,7 @@ const Hotspot = memo(({ position, title, desc, align = 'right', dx = 40, dy = 0,
         {/* Endpoint Container */}
         <div className="absolute" style={{ top: actualDy, left: actualDx }}>
           {/* Content Box */}
-          <div className={`absolute w-max max-w-[120px] md:max-w-[180px] xl:max-w-[240px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-2 md:p-3 xl:p-4 border border-company-green/15 dark:border-gray-800 ${boxClasses} pointer-events-auto transition-all hover:scale-105 duration-500 hotspot-box`}>
+          <div className={`absolute w-max max-w-[120px] md:max-w-[180px] xl:max-w-[240px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-2 md:p-3 xl:p-4 border border-company-green/15 dark:border-gray-800 ${boxClasses} pointer-events-none select-none hotspot-box`}>
              <h4 className="font-bold text-company-darkGreen dark:text-white text-[10px] md:text-xs xl:text-[13px] mb-1 xl:mb-1.5 transition-colors duration-500">{title}</h4>
              <p className="text-company-dark/70 dark:text-gray-400 text-[9px] md:text-[10px] xl:text-[11px] leading-relaxed whitespace-pre-wrap transition-colors duration-500">{desc}</p>
           </div>
