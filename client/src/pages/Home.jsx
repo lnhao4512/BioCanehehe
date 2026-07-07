@@ -41,7 +41,7 @@ const Home = () => {
             <div id="left-column" className="min-w-0">
             <div className="flex items-center gap-4 mb-8">
               <div className="h-[1px] w-12 bg-company-green/40 shrink-0"></div>
-              <span className="text-sm font-bold tracking-[0.2em] text-company-green dark:text-company-lighterGreen uppercase break-words">NĂNG LƯỢNG XANH TỪ THIÊN NHIÊN</span>
+              <span className="text-sm font-bold tracking-[0.2em] text-company-green dark:text-company-lighterGreen uppercase break-words">{t('greenEnergy')}</span>
             </div>
             <h1 
               className="text-4xl md:text-5xl lg:text-5xl 2xl:text-[60px] font-serif font-bold text-company-darkGreen dark:text-white mb-6 md:mb-8 break-words"
