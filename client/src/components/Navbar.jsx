@@ -59,31 +59,31 @@ const Navbar = () => {
         <a href="/#contact" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('contact')}</a>
       </div>
       
-      {/* Desktop Right Actions */}
-      <div className="hidden md:flex gap-6 items-center">
-        {/* Theme Toggle */}
+      {/* Right Actions (Desktop & Mobile) */}
+      <div className="flex gap-4 md:gap-6 items-center z-[101]">
+        {/* Theme Toggle - Visible on all screens */}
         <button 
           onClick={toggleTheme} 
-          className="p-2 rounded-full hover:bg-company-dark/5 dark:hover:bg-white/10 text-company-darkGreen dark:text-company-lighterGreen transition-colors"
+          className="p-1.5 md:p-2 rounded-full hover:bg-company-dark/5 dark:hover:bg-white/10 text-company-darkGreen dark:text-company-lighterGreen transition-colors"
           title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
-          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          {isDark ? <Sun className="w-5 h-5 md:w-[18px] md:h-[18px]" /> : <Moon className="w-5 h-5 md:w-[18px] md:h-[18px]" />}
         </button>
 
-        {/* Custom Language Dropdown */}
+        {/* Language Dropdown - Visible on all screens */}
         <div className="relative" ref={langRef}>
           <button 
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="flex items-center gap-2 text-sm font-medium text-company-dark/70 hover:text-company-green transition-colors"
+            className="flex items-center gap-1.5 md:gap-2 text-sm font-medium text-company-dark/70 hover:text-company-green dark:text-gray-300 dark:hover:text-white transition-colors"
           >
-            <img src={activeLang.flagUrl} alt={activeLang.code} className="w-[18px] h-auto shadow-sm" />
-            <span>{activeLang.code.toUpperCase()}</span>
-            <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+            <img src={activeLang.flagUrl} alt={activeLang.code} className="w-5 md:w-[18px] h-auto shadow-sm" />
+            <span className="hidden md:inline">{activeLang.code.toUpperCase()}</span>
+            <ChevronDown size={14} className={`transition-transform duration-200 hidden md:block ${isLangOpen ? 'rotate-180' : ''}`} />
           </button>
           
           {/* Dropdown Menu */}
           {isLangOpen && (
-            <div className="absolute top-full right-0 mt-3 w-40 bg-white rounded-2xl shadow-[0_12px_40px_rgb(0,0,0,0.12)] border border-black/5 py-2 flex flex-col z-50 overflow-hidden animate-scale-in origin-top-right">
+            <div className="absolute top-full right-0 mt-3 w-40 bg-white dark:bg-gray-900 rounded-2xl shadow-[0_12px_40px_rgb(0,0,0,0.12)] border border-black/5 dark:border-white/10 py-2 flex flex-col z-50 overflow-hidden animate-scale-in origin-top-right">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
@@ -91,7 +91,7 @@ const Navbar = () => {
                     setLanguage(lang.code);
                     setIsLangOpen(false);
                   }}
-                  className={`flex items-center gap-3 px-4 py-2.5 text-sm text-left transition-colors hover:bg-company-green/5 ${language === lang.code ? 'text-company-green font-bold bg-company-green/5' : 'text-company-dark/70'}`}
+                  className={`flex items-center gap-3 px-4 py-2.5 text-sm text-left transition-colors hover:bg-company-green/5 dark:hover:bg-white/5 ${language === lang.code ? 'text-company-green dark:text-company-lighterGreen font-bold bg-company-green/5 dark:bg-white/5' : 'text-company-dark/70 dark:text-gray-300'}`}
                 >
                   <img src={lang.flagUrl} alt={lang.code} className="w-[18px] h-auto shadow-sm block" />
                   <span className="leading-none mt-[2px]">{lang.label}</span>
@@ -101,17 +101,20 @@ const Navbar = () => {
           )}
         </div>
 
-        <Link to="/login" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-dark dark:hover:text-white transition-all font-medium hover:scale-105 active:scale-95">{t('login')}</Link>
-        <a href="#contact" className="bg-company-green text-white text-sm px-6 py-2.5 rounded-full hover:bg-company-darkGreen dark:hover:bg-company-lightGreen transition-all duration-300 font-medium hover:scale-105 active:scale-95 hover:shadow-[0_8px_20px_rgba(40,167,69,0.25)]">{t('contactNow')}</a>
-      </div>
+        {/* Desktop Links (Login & Contact) */}
+        <div className="hidden md:flex gap-6 items-center">
+          <Link to="/login" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-dark dark:hover:text-white transition-all font-medium hover:scale-105 active:scale-95">{t('login')}</Link>
+          <a href="#contact" className="bg-company-green text-white text-sm px-6 py-2.5 rounded-full hover:bg-company-darkGreen dark:hover:bg-company-lightGreen transition-all duration-300 font-medium hover:scale-105 active:scale-95 hover:shadow-[0_8px_20px_rgba(40,167,69,0.25)]">{t('contactNow')}</a>
+        </div>
 
-      {/* Mobile Menu Button */}
-      <button 
-        className="md:hidden flex items-center text-company-darkGreen dark:text-white relative z-[101]"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
-        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden flex items-center text-company-darkGreen dark:text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
@@ -123,34 +126,7 @@ const Navbar = () => {
             <a href="/#brand" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('about')}</a>
             <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-2 border-b border-gray-100 dark:border-gray-800">{t('contact')}</a>
             
-            <div className="py-4 border-b border-gray-100 dark:border-gray-800">
-              <span className="text-sm text-company-dark/50 mb-3 block uppercase tracking-wider">Select Language</span>
-              <div className="grid grid-cols-2 gap-3">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setLanguage(lang.code);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`flex items-center gap-3 p-3 rounded-xl border ${language === lang.code ? 'border-company-green bg-company-green/5 text-company-green' : 'border-gray-100 bg-gray-50'}`}
-                  >
-                    <img src={lang.flagUrl} alt={lang.code} className="w-[20px]" />
-                    <span className="text-sm">{lang.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="py-2 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-              <span className="text-sm font-medium">Dark Mode</span>
-              <button 
-                onClick={toggleTheme} 
-                className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-company-darkGreen dark:text-company-lighterGreen"
-              >
-                {isDark ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
+            {/* Removed redundant language and theme toggles from here since they are now in the top navbar */}
 
             <div className="mt-4 flex flex-col gap-4">
               <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center py-3 bg-gray-100 rounded-xl text-company-dark font-medium">{t('login')}</Link>
