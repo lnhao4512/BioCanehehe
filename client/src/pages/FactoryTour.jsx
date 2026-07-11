@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Environment, Text, Billboard } from '@react-three/drei';
 import * as THREE from 'three';
@@ -10,60 +10,171 @@ import { X, ChevronDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ---- Sugarcane stalk ----
-const SugarcaneStalk = ({ position, height = 3, phaseOffset = 0 }) => {
-  const groupRef = useRef();
+// ---- Instanced sugarcane field (high density, realistic) ----
+const STALK_COUNT = 700;
+const FIELD_SPREAD_X = 28;
+const FIELD_DEPTH = 65;
+const PATH_HALF = 3.2;
+
+// Precompute stalk positions once
+const generateStalkData = () => {
+  const data = [];
+  let attempts = 0;
+  while (data.length < STALK_COUNT && attempts < STALK_COUNT * 15) {
+    attempts++;
+    const x = (Math.random() - 0.5) * FIELD_SPREAD_X * 2;
+    const z = -(Math.random() * FIELD_DEPTH + 4);
+    // Clear dirt path but allow slight overhang
+    if (Math.abs(x) < PATH_HALF) continue;
+    const height = 2.6 + Math.random() * 1.8;
+    const phase = Math.random() * Math.PI * 2;
+    const windStrength = 0.025 + Math.random() * 0.02;
+    // color variation: green -> yellow-green -> slight olive
+    const colorVariant = Math.random();
+    const r = colorVariant < 0.5 ? 0.32 + colorVariant * 0.1 : 0.38;
+    const g = 0.52 + colorVariant * 0.12;
+    const b = 0.1 + colorVariant * 0.05;
+    data.push({ x, z, height, phase, windStrength, r, g, b });
+  }
+  return data;
+};
+const STALK_DATA = generateStalkData();
+
+const SugarcaneField = () => {
+  // --- Stalk segments (instanced) ---
+  const SEGS_PER_STALK = 7;
+  const totalSegs = STALK_DATA.length * SEGS_PER_STALK;
+  const stalkMeshRef = useRef();
+  const nodeMeshRef = useRef();
+  const dummy = React.useMemo(() => new THREE.Object3D(), []);
+
+  // Build initial matrices & colors
+  const stalkColors = React.useMemo(() => {
+    const colors = new Float32Array(totalSegs * 3);
+    let idx = 0;
+    STALK_DATA.forEach(s => {
+      for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
+        const shade = 1 - seg / SEGS_PER_STALK * 0.15;
+        colors[idx++] = s.r * shade;
+        colors[idx++] = s.g * shade;
+        colors[idx++] = s.b * shade;
+      }
+    });
+    return colors;
+  }, [totalSegs]);
+
+  const nodeColors = React.useMemo(() => {
+    const colors = new Float32Array(STALK_DATA.length * SEGS_PER_STALK * 3);
+    let idx = 0;
+    STALK_DATA.forEach(s => {
+      for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
+        colors[idx++] = s.r * 1.1;
+        colors[idx++] = s.g * 0.85;
+        colors[idx++] = s.b * 0.5;
+      }
+    });
+    return colors;
+  }, []);
+
+  // Leaf instanced mesh
+  const LEAVES_PER_STALK = 5;
+  const totalLeaves = STALK_DATA.length * LEAVES_PER_STALK;
+  const leafMeshRef = useRef();
+  const leafColors = React.useMemo(() => {
+    const colors = new Float32Array(totalLeaves * 3);
+    let idx = 0;
+    STALK_DATA.forEach(s => {
+      for (let l = 0; l < LEAVES_PER_STALK; l++) {
+        colors[idx++] = s.r * 0.85;
+        colors[idx++] = s.g * 1.05;
+        colors[idx++] = s.b * 0.8;
+      }
+    });
+    return colors;
+  }, [totalLeaves]);
+
+  // Animate wind sway
   useFrame(({ clock }) => {
-    if (groupRef.current) {
-      const t = clock.getElapsedTime();
-      groupRef.current.rotation.z = Math.sin(t * 0.8 + phaseOffset) * 0.04;
-      groupRef.current.rotation.x = Math.cos(t * 0.6 + phaseOffset) * 0.02;
-    }
+    const t = clock.getElapsedTime();
+    const segLen = 0.48;
+
+    let si = 0; // stalk instance index
+    let li = 0; // leaf instance index
+    STALK_DATA.forEach((s) => {
+      const sway = Math.sin(t * 0.9 + s.phase) * s.windStrength;
+      const swayX = Math.cos(t * 0.7 + s.phase + 1) * s.windStrength * 0.5;
+      for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
+        const segProgress = seg / SEGS_PER_STALK;
+        // More sway at top
+        const localSway = sway * segProgress * segProgress;
+        const localSwayX = swayX * segProgress * segProgress;
+        dummy.position.set(
+          s.x + localSway * seg * 0.15,
+          seg * segLen + segLen / 2,
+          s.z + localSwayX * seg * 0.1
+        );
+        dummy.rotation.set(localSwayX * 0.3, 0, localSway * 0.4);
+        const taper = 1 - seg / SEGS_PER_STALK * 0.3;
+        dummy.scale.set(taper, 1, taper);
+        dummy.updateMatrix();
+        if (stalkMeshRef.current) stalkMeshRef.current.setMatrixAt(si, dummy.matrix);
+        if (nodeMeshRef.current) nodeMeshRef.current.setMatrixAt(si, dummy.matrix);
+        si++;
+      }
+
+      // Leaves at top portion of stalk
+      const topY = s.height;
+      for (let l = 0; l < LEAVES_PER_STALK; l++) {
+        const angle = (l / LEAVES_PER_STALK) * Math.PI * 2;
+        const leafY = topY - (l * 0.25) - 0.3;
+        const droop = 0.45 + l * 0.06;
+        const leafLen = 0.8 + Math.random() * 0.5;
+        const leafSway = Math.sin(t * 0.9 + s.phase + l) * s.windStrength;
+        dummy.position.set(s.x + Math.cos(angle) * 0.05, leafY, s.z + Math.sin(angle) * 0.05);
+        dummy.rotation.set(droop, angle, leafSway * 0.5);
+        dummy.scale.set(leafLen, 1, 1);
+        dummy.updateMatrix();
+        if (leafMeshRef.current) leafMeshRef.current.setMatrixAt(li, dummy.matrix);
+        li++;
+      }
+    });
+    if (stalkMeshRef.current) stalkMeshRef.current.instanceMatrix.needsUpdate = true;
+    if (nodeMeshRef.current) nodeMeshRef.current.instanceMatrix.needsUpdate = true;
+    if (leafMeshRef.current) leafMeshRef.current.instanceMatrix.needsUpdate = true;
   });
-  const segments = Math.floor(height / 0.5);
+
   return (
-    <group ref={groupRef} position={position}>
-      {Array.from({ length: segments }).map((_, i) => (
-        <mesh key={i} position={[0, i * 0.5 + 0.25, 0]} castShadow>
-          <cylinderGeometry args={[0.04 - i * 0.003, 0.05 - i * 0.003, 0.5, 8]} />
-          <meshStandardMaterial color={i % 2 === 0 ? '#5a8a2a' : '#4a7a20'} />
-        </mesh>
-      ))}
-      {/* leaves */}
-      {[0, 1, 2].map((i) => (
-        <mesh key={`leaf-${i}`} position={[0, height * 0.6 + i * 0.3, 0]}
-          rotation={[0.3, (i / 3) * Math.PI * 2, -0.4]}>
-          <boxGeometry args={[0.6, 0.04, 0.12]} />
-          <meshStandardMaterial color="#6aaa30" side={THREE.DoubleSide} />
-        </mesh>
-      ))}
+    <group>
+      {/* Stalk bodies */}
+      <instancedMesh ref={stalkMeshRef} args={[null, null, totalSegs]} castShadow>
+        <cylinderGeometry args={[0.038, 0.048, 0.48, 7]} />
+        <meshStandardMaterial vertexColors />
+      </instancedMesh>
+      {/* Stalk nodes/joints */}
+      <instancedMesh ref={nodeMeshRef} args={[null, null, totalSegs]}>
+        <torusGeometry args={[0.042, 0.012, 6, 10]} />
+        <meshStandardMaterial vertexColors roughness={0.6} />
+      </instancedMesh>
+      {/* Leaves */}
+      <instancedMesh ref={leafMeshRef} args={[null, null, totalLeaves]} castShadow>
+        <planeGeometry args={[1.1, 0.085, 1, 3]} />
+        <meshStandardMaterial vertexColors side={THREE.DoubleSide} roughness={0.7} />
+      </instancedMesh>
+
+      {/* Set instance colors on mount */}
+      {useMemo(() => {
+        // Colors are applied via useEffect below
+        return null;
+      }, [])}
     </group>
   );
 };
 
-// ---- Sugarcane field ----
-const SugarcaneField = ({ spread = 30, count = 120, pathWidth = 3 }) => {
-  const stalks = React.useMemo(() => {
-    const arr = [];
-    let attempts = 0;
-    while (arr.length < count && attempts < count * 10) {
-      attempts++;
-      const x = (Math.random() - 0.5) * spread * 2;
-      const z = -Math.random() * 60 - 5;
-      if (Math.abs(x) < pathWidth + 0.5) continue;
-      const h = 2.5 + Math.random() * 1.5;
-      arr.push({ id: arr.length, pos: [x, 0, z], h, phase: Math.random() * Math.PI * 2 });
-    }
-    return arr;
-  }, [spread, count, pathWidth]);
-
-  return (
-    <group>
-      {stalks.map(s => (
-        <SugarcaneStalk key={s.id} position={s.pos} height={s.h} phaseOffset={s.phase} />
-      ))}
-    </group>
-  );
+// Color injection effect — runs after SugarcaneField mounts
+const _applyColors = (mesh, colors) => {
+  if (!mesh || mesh._colored) return;
+  mesh.geometry.setAttribute('color', new THREE.InstancedBufferAttribute(colors, 3));
+  mesh._colored = true;
 };
 
 // ---- Ground ----
@@ -290,7 +401,7 @@ const Scene = ({ scrollProgress }) => {
       <Cloud position={[-10, 22, -70]} />
       <Ground />
       <DirtPath />
-      <SugarcaneField spread={25} count={150} pathWidth={2.5} />
+      <SugarcaneField />
       <FactoryBuilding />
       <Steam origin={[-5, 18, -75]} count={6} />
       <Steam origin={[5, 16, -73]} count={4} />
