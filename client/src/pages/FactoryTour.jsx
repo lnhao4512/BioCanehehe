@@ -35,99 +35,97 @@ const TOTAL_LEAVES = STALK_DATA.length * LEAVES_PER_STALK * LEAF_SEGS;
 
 // ─── INSTANCED SUGARCANE FIELD (3 draw calls total) ────────────────────────
 const SugarcaneField = () => {
-  const stalkRef = useRef();
-  const nodeRef  = useRef();
-  const leafRef  = useRef();
-  const dummy    = new THREE.Object3D();
-  const stalkColor = new THREE.Color();
-  const leafColor  = new THREE.Color();
-  const nodeColor  = new THREE.Color('#a8c870');
+  const stalkRef   = useRef();
+  const nodeRef    = useRef();
+  const leafRef    = useRef();
+  const dummy      = useRef(new THREE.Object3D());
+  const colorsDone = useRef(false);
 
-  // Set per-instance colors once on mount
-  useEffect(() => {
-    if (!stalkRef.current || !nodeRef.current || !leafRef.current) return;
-    const stalkPalette = ['#cde8a0','#bde090','#d2eca8','#c8e89c','#b8d880'];
-    const leafPalette  = ['#5aaf2a','#4a9f1a','#6abf3a','#50a020','#72cf42'];
-    let si = 0, li = 0;
-    STALK_DATA.forEach((s, idx) => {
-      const sc = stalkPalette[idx % stalkPalette.length];
-      const lc = leafPalette[idx % leafPalette.length];
-      for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
-        stalkColor.set(sc);
-        stalkRef.current.setColorAt(si, stalkColor);
-        nodeColor.set('#a8c870');
-        nodeRef.current.setColorAt(si, nodeColor);
-        si++;
-      }
-      for (let leaf = 0; leaf < LEAVES_PER_STALK * LEAF_SEGS; leaf++) {
-        leafColor.set(lc);
-        leafRef.current.setColorAt(li, leafColor);
-        li++;
-      }
-    });
-    stalkRef.current.instanceColor.needsUpdate = true;
-    nodeRef.current.instanceColor.needsUpdate  = true;
-    leafRef.current.instanceColor.needsUpdate  = true;
-  }, []);
+  const stalkPalette = ['#cde8a0','#bde090','#d2eca8','#c8e89c','#b8d880'];
+  const leafPalette  = ['#5aaf2a','#4a9f1a','#6abf3a','#50a020','#72cf42'];
 
-  // Animate per frame (update instance matrices)
+  // Animate per frame (update instance matrices + lazy color init)
   useFrame(({ clock }) => {
+    if (!stalkRef.current || !nodeRef.current || !leafRef.current) return;
+
+    // Initialize colors once when meshes are ready
+    if (!colorsDone.current) {
+      const sc = new THREE.Color();
+      const lc = new THREE.Color();
+      const nc = new THREE.Color('#a8c870');
+      let si = 0, li = 0;
+      STALK_DATA.forEach((s, idx) => {
+        sc.set(stalkPalette[idx % stalkPalette.length]);
+        lc.set(leafPalette[idx % leafPalette.length]);
+        for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
+          stalkRef.current.setColorAt(si, sc);
+          nodeRef.current.setColorAt(si, nc);
+          si++;
+        }
+        for (let leaf = 0; leaf < LEAVES_PER_STALK * LEAF_SEGS; leaf++) {
+          leafRef.current.setColorAt(li, lc);
+          li++;
+        }
+      });
+      if (stalkRef.current.instanceColor) stalkRef.current.instanceColor.needsUpdate = true;
+      if (nodeRef.current.instanceColor)  nodeRef.current.instanceColor.needsUpdate  = true;
+      if (leafRef.current.instanceColor)  leafRef.current.instanceColor.needsUpdate  = true;
+      colorsDone.current = true;
+    }
+
     const t = clock.getElapsedTime();
     const SEG_H = 0.5;
+    const d = dummy.current;
     let si = 0, li = 0;
 
     STALK_DATA.forEach((s) => {
       const sway  = Math.sin(t * 0.85 + s.phase) * s.wind;
       const swayX = Math.cos(t * 0.65 + s.phase + 1.2) * s.wind * 0.4;
 
-      // Stalk segments
       for (let seg = 0; seg < SEGS_PER_STALK; seg++) {
         const progress = seg / SEGS_PER_STALK;
         const ls = sway  * progress * progress;
         const lx = swayX * progress * progress;
-        dummy.position.set(s.x + ls * seg * 0.12, seg * SEG_H + SEG_H / 2, s.z + lx * seg * 0.08);
-        dummy.rotation.set(lx * 0.25, 0, ls * 0.35);
+        d.position.set(s.x + ls * seg * 0.12, seg * SEG_H + SEG_H / 2, s.z + lx * seg * 0.08);
+        d.rotation.set(lx * 0.25, 0, ls * 0.35);
         const taper = 1 - progress * 0.28;
-        dummy.scale.set(taper, 1, taper);
-        dummy.updateMatrix();
-        stalkRef.current?.setMatrixAt(si, dummy.matrix);
-        nodeRef.current?.setMatrixAt(si, dummy.matrix);
+        d.scale.set(taper, 1, taper);
+        d.updateMatrix();
+        stalkRef.current.setMatrixAt(si, d.matrix);
+        nodeRef.current.setMatrixAt(si, d.matrix);
         si++;
       }
 
-      // Leaves at top
       for (let leaf = 0; leaf < LEAVES_PER_STALK; leaf++) {
-        const angle  = (leaf / LEAVES_PER_STALK) * Math.PI * 2;
-        const baseY  = s.h - leaf * 0.22 - 0.25;
-        const droop  = 0.5 + leaf * 0.06;
+        const angle   = (leaf / LEAVES_PER_STALK) * Math.PI * 2;
+        const baseY   = s.h - leaf * 0.22 - 0.25;
+        const droop   = 0.5 + leaf * 0.06;
         const leafLen = 1.0 + leaf * 0.08;
-        const lsway  = sway * 0.6;
+        const lsway   = sway * 0.6;
 
-        // Segment 1 (upper)
-        dummy.position.set(s.x + Math.cos(angle) * 0.1, baseY + 0.05, s.z + Math.sin(angle) * 0.1);
-        dummy.rotation.set(-droop * 0.3, angle, lsway);
-        dummy.scale.set(leafLen * 0.55, 1, 1);
-        dummy.updateMatrix();
-        leafRef.current?.setMatrixAt(li, dummy.matrix);
+        d.position.set(s.x + Math.cos(angle) * 0.1, baseY + 0.05, s.z + Math.sin(angle) * 0.1);
+        d.rotation.set(-droop * 0.3, angle, lsway);
+        d.scale.set(leafLen * 0.55, 1, 1);
+        d.updateMatrix();
+        leafRef.current.setMatrixAt(li, d.matrix);
         li++;
 
-        // Segment 2 (lower, more drooped)
-        dummy.position.set(
+        d.position.set(
           s.x + Math.cos(angle) * (leafLen * 0.38),
           baseY - 0.22,
           s.z + Math.sin(angle) * (leafLen * 0.38)
         );
-        dummy.rotation.set(-droop * 0.9, angle, lsway * 0.8);
-        dummy.scale.set(leafLen * 0.5, 1, 1);
-        dummy.updateMatrix();
-        leafRef.current?.setMatrixAt(li, dummy.matrix);
+        d.rotation.set(-droop * 0.9, angle, lsway * 0.8);
+        d.scale.set(leafLen * 0.5, 1, 1);
+        d.updateMatrix();
+        leafRef.current.setMatrixAt(li, d.matrix);
         li++;
       }
     });
 
-    if (stalkRef.current) stalkRef.current.instanceMatrix.needsUpdate = true;
-    if (nodeRef.current)  nodeRef.current.instanceMatrix.needsUpdate  = true;
-    if (leafRef.current)  leafRef.current.instanceMatrix.needsUpdate  = true;
+    stalkRef.current.instanceMatrix.needsUpdate = true;
+    nodeRef.current.instanceMatrix.needsUpdate  = true;
+    leafRef.current.instanceMatrix.needsUpdate  = true;
   });
 
   return (
@@ -338,7 +336,7 @@ const Scene = ({ scrollProgress }) => {
       <fog attach="fog" args={['#c8eaf8', 45, 140]} />
       <ambientLight intensity={0.75} />
       <directionalLight position={[15,30,10]} intensity={1.5} color="#fff8e8" />
-      <hemisphereLight args={['#c8eaf8','#7aad45',0.35]} />
+      <hemisphereLight skyColor="#c8eaf8" groundColor="#7aad45" intensity={0.35} />
       <SkyDome />
       <Cloud position={[-35,40,-60]} speed={0.8} />
       <Cloud position={[20, 45,-80]} speed={1.1} />
@@ -385,7 +383,7 @@ const FactoryTour = () => {
         shadows={false}
         camera={{ position:[0,1.8,15], fov:58 }}
         gl={{ antialias:true, powerPreference:'high-performance' }}
-        dpr={[1, 1.5]}
+        dpr={Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 1.5)}
         className="absolute inset-0"
       >
         <Scene scrollProgress={scrollProgress} />
