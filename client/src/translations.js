@@ -1,6 +1,6 @@
 export const translations = {
   vi: {
-    products: "Sản Phẩm", process: "Quy Trình", team: "Thành Viên", about: "Về Chúng Tôi", contact: "Liên Hệ", login: "Đăng nhập", contactNow: "Liên hệ ngay",
+    factory: "Khám phá nhà máy", products: "Sản Phẩm", process: "Quy Trình", team: "Thành Viên", about: "Về Chúng Tôi", contact: "Liên Hệ", login: "Đăng nhập", contactNow: "Liên hệ ngay",
     greenEnergy: "Năng lượng xanh từ thiên nhiên", heroTitle1: "Từ cây mía", heroTitle2: "đến ethanol", heroTitle3: "sạch",
     heroDesc: "BioCane chuyển đổi mía đường thành ethanol sinh học chất lượng cao — giải pháp nhiên liệu tái tạo bền vững cho tương lai xanh của Việt Nam và khu vực.",
     exploreProducts: "Khám phá sản phẩm", downloadProfile: "Tải hồ sơ công ty", litersPerYear: "lít ethanol / năm", purity: "Độ tinh khiết",
@@ -40,7 +40,7 @@ export const translations = {
     coreValue3Title: "Tiên Phong", coreValue3Desc: "Không ngừng nghiên cứu các kỹ thuật lên men và chưng cất mới nhất để tối ưu hóa hiệu suất và tiết kiệm tài nguyên."
   },
   en: {
-    products: "Products", process: "Process", team: "Team", about: "About Us", contact: "Contact", login: "Login", contactNow: "Contact Now",
+    factory: "Explore Factory", products: "Products", process: "Process", team: "Team", about: "About Us", contact: "Contact", login: "Login", contactNow: "Contact Now",
     greenEnergy: "Green energy from nature", heroTitle1: "From sugarcane", heroTitle2: "to clean", heroTitle3: "ethanol",
     heroDesc: "BioCane converts sugarcane into high-quality bioethanol — a sustainable renewable fuel solution for a green future in Vietnam and the region.",
     exploreProducts: "Explore Products", downloadProfile: "Download Profile", litersPerYear: "liters of ethanol / year", purity: "Purity",
@@ -80,7 +80,7 @@ export const translations = {
     coreValue3Title: "Pioneering", coreValue3Desc: "Constantly researching the latest fermentation and distillation techniques to optimize efficiency and save resources."
   },
   ja: {
-    products: "製品", process: "プロセス", team: "チーム", about: "会社概要", contact: "お問い合わせ", login: "ログイン", contactNow: "今すぐ連絡",
+    factory: "工場見学", products: "製品", process: "プロセス", team: "チーム", about: "会社概要", contact: "お問い合わせ", login: "ログイン", contactNow: "今すぐ連絡",
     greenEnergy: "自然からのグリーンエネルギー", heroTitle1: "サトウキビから", heroTitle2: "クリーンな", heroTitle3: "エタノールへ",
     heroDesc: "BioCaneはサトウキビを高品質なバイオエタノールに変換します — ベトナムおよび地域のグリーンな未来のための持続可能な再生可能燃料ソリューション。",
     exploreProducts: "製品を見る", downloadProfile: "会社概要をダウンロード", litersPerYear: "リットルのエタノール / 年", purity: "純度",
@@ -120,7 +120,7 @@ export const translations = {
     coreValue3Title: "パイオニア", coreValue3Desc: "効率を最適化し、資源を節約するために、最新の発酵および蒸留技術を絶えず研究しています。"
   },
   ko: {
-    products: "제품", process: "프로세스", team: "팀", about: "회사 소개", contact: "연락처", login: "로그인", contactNow: "지금 문의",
+    factory: "공장 탐색", products: "제품", process: "프로세스", team: "팀", about: "회사 소개", contact: "연락처", login: "로그인", contactNow: "지금 문의",
     greenEnergy: "자연에서 온 친환경 에너지", heroTitle1: "사탕수수에서", heroTitle2: "청정 에탄올로", heroTitle3: "의 변환",
     heroDesc: "BioCane은 사탕수수를 고품질 바이오 에탄올로 변환합니다.",
     exploreProducts: "제품 탐색", downloadProfile: "회사 소개서 다운로드", litersPerYear: "리터 에탄올 / 년", purity: "순도",
@@ -160,7 +160,7 @@ export const translations = {
     coreValue3Title: "선구적", coreValue3Desc: "효율성을 최적화하고 자원을 절약하기 위해 최신 발효 및 증류 기술을 지속적으로 연구합니다."
   },
   zh: {
-    products: "产品", process: "工艺", team: "团队", about: "关于我们", contact: "联系我们", login: "登录", contactNow: "立即联系",
+    factory: "探索工厂", products: "产品", process: "工艺", team: "团队", about: "关于我们", contact: "联系我们", login: "登录", contactNow: "立即联系",
     greenEnergy: "源自自然的绿色能源", heroTitle1: "从甘蔗", heroTitle2: "到清洁的", heroTitle3: "乙醇",
     heroDesc: "BioCane将甘蔗转化为高质量的生物乙醇 — 为绿色未来提供可持续燃料。",
     exploreProducts: "探索产品", downloadProfile: "下载公司简介", litersPerYear: "升乙醇 / 年", purity: "纯度",

@@ -32,7 +32,7 @@ const Home = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
+      <section id="factory" className="relative pt-32 pb-12 px-6 lg:px-12 xl:px-16 min-h-screen flex flex-col justify-center bg-[#f8f5f0] dark:bg-[#0a0a0a] overflow-hidden transition-colors duration-500">
         
         <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-8 lg:gap-10 2xl:gap-12 items-center relative z-10 pointer-events-none">
           
