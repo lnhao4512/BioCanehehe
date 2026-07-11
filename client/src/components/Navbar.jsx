@@ -53,7 +53,7 @@ const Navbar = () => {
       
       {/* Desktop Links */}
       <div className="hidden md:flex gap-8 items-center">
-        <a href="/#factory" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('factory')}</a>
+        <Link to="/factory-tour" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('factory')}</Link>
         <a href="/#products" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('products')}</a>
         <a href="/#process" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('process')}</a>
         <a href="/#team" className="text-sm text-company-dark/70 dark:text-gray-300 hover:text-company-green dark:hover:text-company-lighterGreen transition-colors font-medium">{t('team')}</a>
@@ -125,7 +125,7 @@ const Navbar = () => {
         className={`md:hidden fixed inset-0 pt-24 bg-white dark:bg-gray-950 z-[90] flex flex-col px-6 pb-6 overflow-y-auto transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-8 invisible'}`}
       >
         <div className="flex flex-col gap-6 text-lg font-medium text-company-darkGreen dark:text-white">
-          <a href="/#factory" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('factory')}</a>
+          <Link to="/factory-tour" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('factory')}</Link>
           <a href="/#products" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('products')}</a>
           <a href="/#process" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('process')}</a>
           <a href="/#team" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-gray-100 dark:border-gray-800 hover:text-company-green dark:hover:text-company-lighterGreen hover:pl-4 transition-all duration-300 ease-out hover:drop-shadow-[0_0_8px_rgba(46,204,113,0.4)] block">{t('team')}</a>

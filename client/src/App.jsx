@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import FactoryTour from './pages/FactoryTour';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -56,6 +57,7 @@ const App = () => {
         <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/factory-tour" element={<FactoryTour />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={
